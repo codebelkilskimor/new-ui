@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Estos son sus roles</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mt-1">
+      <table class="table table-hover table-bordered table-striped">
+        <tbody>
+          <tr  *ngFor="let role of data.roles">
+            <td>
+              <mat-icon class="icon" matSuffix>{{role.icon}}</mat-icon>
+              <strong>{{role.role}}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button mat-raised-button color="accent" class="btn-block" (click)="close()">
+        Continuar <mat-icon class="icon" matSuffix>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

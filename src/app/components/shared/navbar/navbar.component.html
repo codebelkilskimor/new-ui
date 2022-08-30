@@ -1,0 +1,18 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <img src="https://www.usbbog.edu.co/wp-content/uploads/2022/06/LogoUsbbog.png"
+         alt="">
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a *ngFor="let m of menuItems; let position = index;"
+       class="p-2 text-dark"
+       routerLink="/{{m.link}}"
+       [class.active]="m.active"
+       (click)="clickSetActive(position)">
+      <i class="fa fa-{{m.icon}}"></i> {{m.name}}
+    </a>
+  </nav>
+  <button class="btn btn-outline-danger" (click)="logout()">
+    Logout <i class="fas fa-user"></i>
+  </button>
+</div>
