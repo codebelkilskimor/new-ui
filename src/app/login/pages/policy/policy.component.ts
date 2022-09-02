@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { LoggedService } from '../../../services/logged.service';
 
 @Component({
   selector: 'app-policy',
@@ -10,7 +11,11 @@ import { AuthService } from '../../../services/auth.service';
 export class PolicyComponent implements OnInit {
   lockTime = 5000;
   lockButton = true;
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private logged: LoggedService
+  ) {}
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -28,7 +33,8 @@ export class PolicyComponent implements OnInit {
     // @ts-ignore
     this.auth.setToken(user);
     localStorage.removeItem('user_data');
-    this.router.navigate(['/home']);
+    this.logged.changeAuthStatus(true)
+    this.router.navigateByUrl('/home');
     setTimeout(() => {
       window.location.reload();
     }, 10);

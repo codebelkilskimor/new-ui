@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggedService } from '../../services/logged.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,7 +13,10 @@ export class NavbarComponent implements OnInit {
     {name: 'Administracion', icon: 'cog fa-spin', active: false, link: null},
     {name: 'Busqueda', icon: 'search', active: false, link: null},
   ];
-  constructor() { }
+  constructor(
+    private logged: LoggedService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     const items = localStorage.getItem('menu');
@@ -22,7 +27,8 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     localStorage.clear();
-    window.location.reload();
+    this.router.navigateByUrl('/login');
+    this.logged.changeAuthStatus(false)
   }
 
   clickSetActive(position: number) {
