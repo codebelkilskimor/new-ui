@@ -9,7 +9,8 @@ import { LoggedService } from '../../../services/logged.service';
   styleUrls: ['./policy.component.scss'],
 })
 export class PolicyComponent implements OnInit {
-  lockTime = 5000;
+  lockTime = 2000;
+  
   lockButton = true;
   constructor(
     private router: Router,
@@ -36,4 +37,5 @@ export class PolicyComponent implements OnInit {
     this.logged.changeAuthStatus(true)
     this.router.navigateByUrl('/home');
   }
+
 }
