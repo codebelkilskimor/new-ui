@@ -9,6 +9,7 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class PolicyComponent implements OnInit {
   lockTime = 2000;
+  
   lockButton = true;
   constructor(private router: Router,
               private auth: AuthService) { }
