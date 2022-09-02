@@ -27,8 +27,8 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     localStorage.clear();
-    this.router.navigateByUrl('/login');
     this.logged.changeAuthStatus(false)
+    this.router.navigateByUrl('/login');
   }
 
   clickSetActive(position: number) {

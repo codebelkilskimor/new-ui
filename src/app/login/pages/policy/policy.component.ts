@@ -35,8 +35,5 @@ export class PolicyComponent implements OnInit {
     localStorage.removeItem('user_data');
     this.logged.changeAuthStatus(true)
     this.router.navigateByUrl('/home');
-    setTimeout(() => {
-      window.location.reload();
-    }, 10);
   }
 }
