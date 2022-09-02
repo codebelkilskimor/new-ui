@@ -8,7 +8,7 @@ import {AuthService} from "../../../services/auth.service";
   styleUrls: ['./policy.component.scss']
 })
 export class PolicyComponent implements OnInit {
-  lockTime = 5000;
+  lockTime = 2000;
   lockButton = true;
   constructor(private router: Router,
               private auth: AuthService) { }
