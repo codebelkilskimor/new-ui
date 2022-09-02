@@ -1,0 +1,83 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <div class="card">
+                <div class="card-header text-center">
+                    <img src="/assets/img/logo.png" alt="" />
+                </div>
+                <div class="card-body">
+                    <div *ngIf="!loginForm.valid" class="alert alert-info text-center">
+                        <strong> Completa el formulario para continuar </strong>
+                    </div>
+                    <div *ngIf="loginForm.valid" class="alert alert-success text-center">
+                        <strong> Inicie Sesion para continuar </strong>
+                    </div>
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                        <mat-form-field class="max-width" appearance="outline">
+                            <mat-label>Correo Electronico</mat-label>
+                            <input matInput [disabled]="onRequest" autocomplete="disabled" formControlName="email" placeholder="Ingrese su correo electronico" />
+                            <mat-icon matSuffix>person</mat-icon>
+                            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                                Este campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                                Ingrese un email valido
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="max-width" appearance="outline">
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput [disabled]="onRequest" autocomplete="disabled" formControlName="password" [type]="hidePassword ? 'password' : 'text'" placeholder="Ingrese su contraseña" />
+                            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{
+                  hidePassword ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button mat-raised-button color="primary" class="btn-block" (click)="sendRequest()" [disabled]="loginForm.invalid || onRequest">
+            <ng-container *ngIf="!onRequest">
+              Iniciar Sesion
+              <div
+                *ngIf="loginForm.valid"
+                class="spinner-grow text-light spinner-grow-sm"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="onRequest">
+              Iniciando Sesion
+              <div
+                class="spinner-border text-light spinner-border-sm"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </ng-container>
+          </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 offset-md-4 mt-5">
+            <h3 class="text-center">
+                Querido usuario acá podrá realizar la gestión del conocimiento de la universidad San Buenaventura Bogotá, ingrese sus datos y posteriormente acepte los términos de seguridad
+            </h3>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="contenedor-formulario-login">
+    <div class="subcontenedor-formulario-login">
+        <img>
+        <h1>KNOWLEDGE USB - MAPA DE CONOCIMIENTO<br>UNIVERSIDAD SAN BUENAVENTURA</h1>
+        <form>
+
+        </form>
+        <p>
+            Querido usuario acá podrá realizar la gestión del conocimiento de la universidad San Buenaventura Bogotá, ingrese sus datos y posteriormente acepte los términos de seguridad
+        </p>
+    </div>
+</div> -->

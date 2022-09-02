@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {AuthService} from "../../../services/auth.service";
-import {RoleModalComponent} from "../role-modal/role-modal.component";
-import {MatDialog} from "@angular/material/dialog";
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { RoleModalComponent } from '../role-modal/role-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface LoginUser {
   email: string;
@@ -14,30 +13,29 @@ export interface LoginUser {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   hidePassword: boolean = true;
   onRequest: boolean = false;
   user: LoginUser = {
     email: '',
-    password: ''
+    password: '',
   };
   loginForm = new FormGroup({
     email: new FormControl(this.user.email, [
       Validators.email,
-      Validators.required
+      Validators.required,
     ]),
-    password: new FormControl(this.user.password, [
-      Validators.required
-    ])
+    password: new FormControl(this.user.password, [Validators.required]),
   });
-  constructor(private router: Router,
-              private auth: AuthService,
-              public dialog: MatDialog) { }
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    public dialog: MatDialog
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   sendRequest() {
     this.onRequest = true;
@@ -49,8 +47,8 @@ export class LoginComponent implements OnInit {
   showModal() {
     this.onRequest = false;
     const roles = [
-      {role: 'Administrador', icon: 'settings'},
-      {role: 'Lider de grupo de investigacion', icon: 'person'},
+      { role: 'Administrador', icon: 'settings' },
+      { role: 'Lider de grupo de investigacion', icon: 'person' },
       /*
       {role: 'Coordinador Investigacion Facultad', icon: 'group'},
       {role: 'Profesional de investigacion', icon: 'face'},
@@ -65,11 +63,11 @@ export class LoginComponent implements OnInit {
     ];
     const dialogRef = this.dialog.open(RoleModalComponent, {
       width: '550px',
-      data: {roles},
-      disableClose: true
+      data: { roles },
+      disableClose: true,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result.success) {
         this.login();
       }
@@ -79,7 +77,6 @@ export class LoginComponent implements OnInit {
   login() {
     const user = this.loginForm.getRawValue();
     localStorage.setItem('user_data', JSON.stringify(user));
-    this.router.navigate(['/policy'])
+    this.router.navigate(['/policy']);
   }
-
 }

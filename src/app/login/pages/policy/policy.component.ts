@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {AuthService} from "../../../services/auth.service";
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-policy',
   templateUrl: './policy.component.html',
-  styleUrls: ['./policy.component.scss']
+  styleUrls: ['./policy.component.scss'],
 })
 export class PolicyComponent implements OnInit {
   lockTime = 5000;
   lockButton = true;
-  constructor(private router: Router,
-              private auth: AuthService) { }
+  constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -21,7 +20,7 @@ export class PolicyComponent implements OnInit {
 
   reject() {
     localStorage.clear();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
   accept() {
@@ -34,5 +33,4 @@ export class PolicyComponent implements OnInit {
       window.location.reload();
     }, 10);
   }
-
 }
