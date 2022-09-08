@@ -37,41 +37,33 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  sendRequest() {
-    this.onRequest = true;
-    setTimeout(() => {
-      this.showModal();
-    }, 2000);
-  }
-
   showModal() {
     this.onRequest = false;
     const roles = [
       { role: 'Administrador', icon: 'settings' },
       { role: 'Lider de grupo de investigacion', icon: 'person' },
-      /*
-      {role: 'Coordinador Investigacion Facultad', icon: 'group'},
-      {role: 'Profesional de investigacion', icon: 'face'},
-      {role: 'Director de programa', icon: 'rocket_launch'},
-      {role: 'Docente', icon: 'emoji_people'},
-      {role: 'Docente lider semillero', icon: 'diversity_3'},
-      {role: 'Docente investigador', icon: 'potted_plant'},
-      {role: 'Biblioteca', icon: 'diversity_4'},
-      {role: 'Administrador', icon: 'sentiment_very_satisfied'},
-      {role: 'Visitante', icon: 'favorite'},
-       */
+      { role: 'Coordinador Investigacion Facultad', icon: 'group' },
+      { role: 'Profesional de investigacion', icon: 'face' },
+      { role: 'Director de programa', icon: 'rocket_launch' },
+      { role: 'Docente', icon: 'emoji_people' },
+      { role: 'Docente lider semillero', icon: 'diversity_3' },
+      { role: 'Docente investigador', icon: 'potted_plant' },
+      { role: 'Biblioteca', icon: 'diversity_4' },
+      { role: 'Administrador', icon: 'sentiment_very_satisfied' },
+      { role: 'Visitante', icon: 'favorite' },
     ];
-    const dialogRef = this.dialog.open(RoleModalComponent, {
-      width: '550px',
-      data: { roles },
-      disableClose: true,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.success) {
-        this.login();
-      }
-    });
+    setTimeout(() => {
+      const dialogRef = this.dialog.open(RoleModalComponent, {
+        width: '550px',
+        data: { roles },
+        disableClose: true,
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result.success) {
+          this.login();
+        }
+      });
+    }, 2000);
   }
 
   login() {

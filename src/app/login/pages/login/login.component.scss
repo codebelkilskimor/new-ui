@@ -1,3 +1,101 @@
 img {
-  width: 100%;
+    width: 100%;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.texto-querido-usuario {
+    margin-top: 20px;
+    text-align: justify;
+    text-align-last: center;
+}
+
+::ng-deep .mat-form-field {
+    /* Border */
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: white;
+    }
+    .mat-input-element {
+        color: #fff;
+        border-color: #fff;
+    }
+    .mat-form-field-label {
+        color: #fff;
+        border-color: #fff;
+    }
+    .mat-form-field-underline {
+        background-color: #fff;
+        border-color: #fff;
+    }
+    .mat-form-field-ripple {
+        background-color: #fff;
+        border-color: #fff;
+    }
+    .mat-form-field-required-marker {
+        color: #fff;
+    }
+    mat-icon {
+        color: #fff
+    }
+     ::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #fff;
+        opacity: 1;
+        /* Firefox */
+    }
+     :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: #fff;
+    }
+     ::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: #fff;
+    }
+}
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #fff !important;
+}
+
+::ng-deep .mat-form-field.mat-focused {
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: white;
+    }
+    .mat-form-field-label {
+        color: #fff;
+    }
+    .mat-form-field-ripple {
+        background-color: #fff;
+    }
+    .mat-form-field-required-marker {
+        color: #fff;
+    }
+    .mat-input-element {
+        color: #fff;
+    }
+    mat-input {
+        color: #fff;
+    }
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid {
+    .mat-input-element {
+        color: #ee4c4c;
+    }
+    .mat-form-field-label {
+        color: #ee4c4c;
+        .mat-form-field-required-marker {
+            color: #ee4c4c;
+        }
+    }
+    .mat-form-field-ripple {
+        background-color: #ee4c4c;
+    }
+    mat-input {
+        color: #ee4c4c;
+    }
 }

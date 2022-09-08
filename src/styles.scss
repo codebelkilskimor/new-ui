@@ -1,22 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 body {
-  background-color: #eaeaea;
+    height: 100vh;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #6f6f6f;
+}
+
+.contenedor-full-flex-app {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor-min-app {
+    width: 95%;
+    margin: auto;
+    max-width: 750px;
+}
+
+.subcontenedor-min-app {
+    padding: 15px;
+}
+
+.titulo-usb {
+    color: #ffffff;
+    text-align: center;
+    font-size: 25px;
 }
 
 .max-width {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .text-white {
-  color: white !important;
+    color: white !important;
+}
+
+.orange-button {
+    width: 100%;
+    background-color: #ea8500 !important;
+    color: #fff;
 }
 
 .active {
-  color: orange !important;
+    color: orange !important;
 }
