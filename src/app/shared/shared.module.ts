@@ -5,11 +5,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MaterialModule } from '../material.module';
 import { RouterModule } from '@angular/router';
 import { SharedRoutingModule } from './shared-routing.module';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
   declarations: [
     LoaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    FiltersComponent
   ],
   imports: [
     CommonModule,

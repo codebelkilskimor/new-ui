@@ -23,6 +23,10 @@ body {
     padding: 15px;
 }
 
+.no-padding {
+    padding: 0 !important;
+}
+
 .titulo-usb {
     color: #ffffff;
     text-align: center;
@@ -44,5 +48,11 @@ body {
 }
 
 .active {
-    color: orange !important;
+    background: rgba(248, 153, 56, 0.6) !important;
+    color: #fff;
+    border-radius: 0 !important;
+}
+
+.no-border {
+    border: none !important;
 }
