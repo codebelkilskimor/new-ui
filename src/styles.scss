@@ -5,6 +5,14 @@ body {
     background-color: #6f6f6f;
 }
 
+.ancho-completo {
+    width: 100% !important;
+}
+
+.no-border-radius {
+    border-radius: 0 !important;
+}
+
 .contenedor-full-flex-app {
     display: flex;
     flex-wrap: wrap;
@@ -44,6 +52,12 @@ body {
 .orange-button {
     width: 100%;
     background-color: #ea8500 !important;
+    color: #fff;
+}
+
+.orange-button-transparent {
+    width: 100%;
+    background-color: rgba(248, 153, 56, 0.6) !important;
     color: #fff;
 }
 

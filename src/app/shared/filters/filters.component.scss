@@ -1,0 +1,27 @@
+.filters-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.6);
+    margin-bottom: 25px;
+}
+
+.boton-filtro {
+    width: 105px !important;
+    margin-left: auto !important;
+}
+
+.cont-filter {
+    width: 25%;
+    border-right: 1px solid #000;
+    ;
+}
+
+.no-border-right {
+    border-right: none;
+}
+
+.header-filtro {
+    display: flex;
+    align-items: center;
+}

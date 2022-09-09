@@ -6,11 +6,13 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { NavegacionComponent } from './components/navegacion/navegacion.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ReportsComponent
+    ReportsComponent,
+    NavegacionComponent
   ],
   imports: [
     CommonModule,

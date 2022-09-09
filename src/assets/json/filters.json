@@ -1,0 +1,89 @@
+[{
+        "nombre": "Estado",
+        "elems": [{
+                "key": "en_propuesta",
+                "value": "En Propuesta"
+            },
+            {
+                "key": "en_desarrollo",
+                "value": "En Desarrollo"
+            },
+            {
+                "key": "en_correcciones",
+                "value": "En Correcciones"
+            },
+            {
+                "key": "finalizado",
+                "value": "Finalizado"
+            }
+        ]
+    },
+    {
+        "nombre": "Facultad",
+        "elems": [{
+                "key": "ingenieria",
+                "value": "Ingeniería"
+            },
+            {
+                "key": "ciencias_juridicas",
+                "value": "Ciencias Jurídicas"
+            },
+            {
+                "key": "humanidades",
+                "value": "Humanidades"
+            },
+            {
+                "key": "pedagogia_infantil",
+                "value": "Pedagogía Infantil"
+            },
+            {
+                "key": "ciencias_politicas",
+                "value": "Ciencias Politicas"
+            }
+        ]
+    },
+    {
+        "nombre": "Programa",
+        "elems": [{
+                "key": "ing_sistemas",
+                "value": "Ingeniería de Sistemas"
+            },
+            {
+                "key": "psicologia",
+                "value": "Psicología"
+            },
+            {
+                "key": "derecho",
+                "value": "Derecho"
+            },
+            {
+                "key": "pedagogia_infantil",
+                "value": "Pedagogía Infantil"
+            },
+            {
+                "key": "ciencias_politicas",
+                "value": "Ciencias Politicas"
+            }
+        ]
+    },
+    {
+        "nombre": "Area De Conocimiento",
+        "elems": [{
+                "key": "area_uno",
+                "value": "Area 1"
+            },
+            {
+                "key": "area_dos",
+                "value": "Area 2"
+            },
+            {
+                "key": "area_tres",
+                "value": "Area 3"
+            },
+            {
+                "key": "area_cuatro",
+                "value": "Area 4"
+            }
+        ]
+    }
+]

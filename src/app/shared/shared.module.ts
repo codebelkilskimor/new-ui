@@ -21,7 +21,8 @@ import { FiltersComponent } from './filters/filters.component';
   ],
   exports: [
     LoaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    FiltersComponent
   ]
 })
 export class SharedModule { }

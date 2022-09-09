@@ -7,16 +7,16 @@ import { ReportsComponent } from './pages/reports/reports.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/reportes',
     pathMatch: 'full',
   },
   {
-    path: 'home',
+    path: 'reportes',
     component: HomeComponent,
     canActivate: [PrivateGuard],
   },
   {
-    path: 'reports',
+    path: 'dashboard',
     component: ReportsComponent,
     canActivate: [PrivateGuard],
   },

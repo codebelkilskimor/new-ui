@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="no-padding navbar-custom">
     <mat-toolbar-row class="no-padding">
-        <a class="no-border" [routerLink]="['/']">
+        <a class="no-border" routerLink="/admin/reportes">
             <img style="max-width: 260px" class="align_self" src="/assets/img/logo.png" />
         </a>
         <span class="example-spacer"></span>
@@ -9,7 +9,7 @@
         <button mat-button class="boton-logout" [matMenuTriggerFor]="menu">
       <mat-icon>account_circle</mat-icon>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button (click) = "logout()" mat-menu-item>
           <mat-icon>logout</mat-icon>
           <span>Logout</span>
         </button>

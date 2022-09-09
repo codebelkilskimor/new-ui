@@ -35,7 +35,7 @@ export class PolicyComponent implements OnInit {
     this.auth.setToken(user);
     localStorage.removeItem('user_data');
     this.logged.changeAuthStatus(true)
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/admin/reportes');
   }
 
 }
