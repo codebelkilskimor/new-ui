@@ -2,70 +2,69 @@
 
 <app-filters></app-filters>
 
-<div class="row">
-    <div class="col-md-4 offset-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="text-center">Seleccione un reporte</h2>
-                <mat-form-field class="max-width" appearance="outline">
-                    <mat-label>Tipos de reporte</mat-label>
-                    <mat-select [(ngModel)]="report">
-                        <mat-option>Select Project Type</mat-option>
-                        <mat-option *ngFor="let r of reports" [value]="r">
-                            {{ r }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="card-footer">
-                <button mat-raised-button color="primary" class="btn-block" (click)="sendRequest()" [disabled]="report === null">
-        Generar reporte <i class="fa fa-file-pdf"></i>
-      </button>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="contenedor-max-app">
+    <div class="row mt-5">
+        <h2 class="color-blanco">GENERADOR DE REPORTES</h2>
 
-<div class="container-fluid" *ngIf="onRequest === true">
-    <div class="row">
-        <div class="col-md-6 offset-md-3 mt-3">
-            <div class="card">
-                <div class="card-body">
-                    <app-loader [element]="'Reporte de datos'"></app-loader>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        <mat-form-field appearance="fill" class="ancho-completo no-padding">
+            <mat-label>Seleccione un reporte:</mat-label>
+            <mat-select class="ancho-completo" [(ngModel)]="reporte">
+                <mat-option style="background-color: #fff;" value="">-- Seleccione un reporte --</mat-option>
+                <mat-option style="background-color: #fff;" *ngFor="let r of reportes" [value]="r">
+                    {{ r }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-button class="orange-button generar-reporte" (click)="sendRequest()" [disabled]="reporte === ''">
+            Abrir PDF <i class="fa fa-file-pdf"></i>  
+        </button>
 
-<div class="container-fluid" *ngIf="onRequest === false">
-    <div class="row">
-        <div class="col-md-6 offset-md-3 mt-3">
-            <div class="card">
-                <div class="card-header text-center">
-                    <strong>Tabla con previsualizacion de datos</strong>
-                </div>
-                <div class="card-body">
-                    <table class="table table-hover table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>col</th>
-                                <th>col</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>x</td>
-                                <td>y</td>
-                            </tr>
-                            <tr>
-                                <td>x</td>
-                                <td>y</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <app-loader class="ancho-completo" *ngIf="onRequest" [element]="'Reporte de datos'"></app-loader>
+
+        <ng-container *ngIf="showTable">
+            <h3 class="mt-3 mb-1 color-blanco ancho-completo">Resultados:</h3>
+            <table class="fondo-blanco mt-3 mb-3 ancho-completo table table-hover table-bordered table-striped no-padding">
+                <thead>
+                    <tr>
+                        <th>col</th>
+                        <th>col</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x</td>
+                        <td>y</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td>y</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td>y</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td>y</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td>y</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td>y</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td>y</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td>y</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
     </div>
 </div>

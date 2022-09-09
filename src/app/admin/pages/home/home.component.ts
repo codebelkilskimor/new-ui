@@ -6,15 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  reports = [
-    'tipo 1',
-    'tipo 2',
-    'tipo 3',
-    'tipo 4',
-    'tipo 5'
+  reportes = [
+    'Ejemplo 1',
+    'Ejemplo 2',
+    'Ejemplo 3',
+    'Ejemplo 4',
+    'Ejemplo 5'
   ];
-  onRequest: any = null;
-  report = null;
+  onRequest: boolean = false;
+  showTable: boolean = false
+  reporte: string = '';
   constructor() { }
 
   ngOnInit(): void {
@@ -22,9 +23,11 @@ export class HomeComponent implements OnInit {
 
   sendRequest() {
     this.onRequest = true;
+    this.showTable = false
     setTimeout(() => {
       this.onRequest = false;
-    }, 2000);
+      this.showTable = true
+    }, 1000);
   }
 
 }

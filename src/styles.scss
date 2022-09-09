@@ -13,6 +13,20 @@ body {
     border-radius: 0 !important;
 }
 
+.color-blanco {
+    color: #fff;
+}
+
+.fondo-blanco {
+    background-color: #fff;
+}
+
+.contenedor-max-app {
+    width: 90%;
+    max-width: 1280px;
+    margin: auto;
+}
+
 .contenedor-full-flex-app {
     display: flex;
     flex-wrap: wrap;
