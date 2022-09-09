@@ -18,6 +18,7 @@ import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { AdminModule } from './admin/admin.module';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AdminModule } from './admin/admin.module';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    NgChartsModule
   ],
   exports: [MaterialModule],
   providers: [
