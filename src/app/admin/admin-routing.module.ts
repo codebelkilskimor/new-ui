@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { PrivateGuard } from '../guards/private.guard';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { SearcherComponent } from './pages/searcher/searcher.component';
+import { SearcherBComponent } from './pages/searcher-b/searcher-b.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,16 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: ReportsComponent,
+    canActivate: [PrivateGuard],
+  },
+  {
+    path: 'buscador',
+    component: SearcherComponent,
+    canActivate: [PrivateGuard],
+  },
+  {
+    path: 'buscador-b',
+    component: SearcherBComponent,
     canActivate: [PrivateGuard],
   },
 ];

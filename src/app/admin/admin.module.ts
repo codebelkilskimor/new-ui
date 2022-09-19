@@ -11,6 +11,10 @@ import { CardsComponent } from './components/cards/cards.component';
 import { NgChartsModule } from 'ng2-charts';
 import { TablaRankingComponent } from './components/tabla-ranking/tabla-ranking.component';
 import { TablaReportesComponent } from './components/tabla-reportes/tabla-reportes.component';
+import { SearcherComponent } from './pages/searcher/searcher.component';
+import { NavbarSearchComponent } from './components/navbar-search/navbar-search.component';
+import { SearcherBComponent } from './pages/searcher-b/searcher-b.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { TablaReportesComponent } from './components/tabla-reportes/tabla-report
     NavegacionComponent,
     CardsComponent,
     TablaRankingComponent,
-    TablaReportesComponent
+    TablaReportesComponent,
+    SearcherComponent,
+    NavbarSearchComponent,
+    SearcherBComponent
+
   ],
   imports: [
     CommonModule,
