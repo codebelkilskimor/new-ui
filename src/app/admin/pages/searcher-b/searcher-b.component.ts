@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearcherBComponent implements OnInit {
 
+  onRequest: boolean = false;
+  showTable: boolean = false
+  reporte: string = '';
   constructor() { }
 
   ngOnInit(): void {
   }
+  sendRequest() {
+    this.onRequest = true;
+    this.showTable = false
+    setTimeout(() => {
+      this.onRequest = false;
+      this.showTable = true
+    }, 1000);
+  }
+ 
+
+  
 
 }

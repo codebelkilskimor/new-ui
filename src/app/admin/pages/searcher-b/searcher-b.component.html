@@ -6,54 +6,27 @@
         <div class="contenedor-max-app">
             <div class="row mt-5">
                 <h2 class="color-negro">BUSCADOR DE INVESTIGADORES</h2>
-            </div>                    
-            <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="NOMBRE DE INVESTIGADOR" aria-label="Search" aria-describedby="search-addon" />
-            <button routerLinkActive="active" type="button" class="orange-button generar-reporte boton-navegar ml-2"><i class="fa fa-search"></i></button>
-          </div>
-          <br>
+            </div>
+            <div class="ancho-completo">  
+                    <mat-form-field appearance="fill" class="ancho-completo no-padding">          
+                        <mat-label> NOMBRE DE INVESTIGADOR</mat-label>
+                        <input matInput>
+                    </mat-form-field>  
+                    <button mat-button class="orange-button generar-reporte  ml-2" (click)="sendRequest()"><i class="fa fa-search"></i>  
+                    </button>
+
+            </div>
+                <br>
           <h2 class="color-negro">Resultados:</h2>
-          <div class="card" style="width: 78rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Titulo </h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"style="color: orange;"><b>NOMBRE DE INVESTIGADOR</b></li>
-                        <li class="list-group-item"><b>Nombre</b></li>
-                        <li class="list-group-item"><b>Nombre</b></li>
-                        <li class="list-group-item"><b>Nombre</b></li>
+          <app-loader class="ancho-completo" *ngIf="onRequest" [element]="'Reporte de datos'"></app-loader>
 
-                    </ul>
-                </div>
-          </div>
-          <br>
-          <div class="card" style="width: 78rem;">
-            <div class="card-body">
-                <h5 class="card-title">Titulo </h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"style="color: orange;"><b>NOMBRE DE INVESTIGADOR</b></li>
-                    <li class="list-group-item"><b>Nombre</b></li>
-                    <li class="list-group-item"><b>Nombre</b></li>
-                    <li class="list-group-item"><b>Nombre</b></li>
-
-                </ul>
-            </div>
-            
-      </div>
-      <br>
-          <div class="card" style="width: 78rem;">
-            <div class="card-body">
-                <h5 class="card-title">Titulo </h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"style="color: orange;"><b>NOMBRE DE INVESTIGADOR</b></li>
-                    <li class="list-group-item"><b>Nombre</b></li>
-                    <li class="list-group-item"><b>Nombre</b></li>
-                    <li class="list-group-item"><b>Nombre</b></li>
-
-                </ul>
-            </div>
-        </div>   
+        <ng-container *ngIf="showTable==true">
+            <app-tabla-search></app-tabla-search>
+        </ng-container>
+          
+  
         <br>
-        <div class="row mt-5">
+        <div class="row mt-5 ">
             <nav aria-label="Page navigation example" >
                 <ul class="pagination" >
                 <li class="page-item">

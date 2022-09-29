@@ -14,6 +14,9 @@ import { TablaReportesComponent } from './components/tabla-reportes/tabla-report
 import { SearcherComponent } from './pages/searcher/searcher.component';
 import { NavbarSearchComponent } from './components/navbar-search/navbar-search.component';
 import { SearcherBComponent } from './pages/searcher-b/searcher-b.component';
+import { TablaSearchComponent } from './components/tabla-saerch/tabla-search.component';
+import { TablaProyectoComponent } from './components/tabla-proyecto/tabla-proyecto.component';
+
 
 
 @NgModule({
@@ -24,9 +27,12 @@ import { SearcherBComponent } from './pages/searcher-b/searcher-b.component';
     CardsComponent,
     TablaRankingComponent,
     TablaReportesComponent,
+    TablaProyectoComponent,
+    TablaSearchComponent,
     SearcherComponent,
     NavbarSearchComponent,
-    SearcherBComponent
+    SearcherBComponent,
+
 
   ],
   imports: [

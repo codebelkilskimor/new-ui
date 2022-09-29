@@ -23,12 +23,12 @@ const routes: Routes = [
     canActivate: [PrivateGuard],
   },
   {
-    path: 'buscador',
+    path: 'buscador-proyecto',
     component: SearcherComponent,
     canActivate: [PrivateGuard],
   },
   {
-    path: 'buscador-b',
+    path: 'buscador-investigador',
     component: SearcherBComponent,
     canActivate: [PrivateGuard],
   },

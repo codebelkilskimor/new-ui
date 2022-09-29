@@ -21,6 +21,25 @@ body {
 .fondo-blanco {
     background-color: #fff;
 }
+//Navbar//
+.botones-rutas {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.boton-navegar {
+    color: #fff;
+    width: 50%;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #fff;
+}
+
+.boton-navegar:nth-of-type(1) {
+    border-right: 1px solid #fff;
+}
+
+//end Navbar//
 
 .contenedor-max-app {
     width: 90%;
@@ -100,5 +119,25 @@ body {
     background-color: #00e5ff;
     color: #fff;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.page-style{
+    background-color: #00e5ff;
+    height: 100%;
+}
+//buscador//
+.body-searcher{
+    background-color: white;
+    height:100%;
+  } 
+  .fondo{
+      background:white;
+      height:auto;
+      
+  }
+  button{
+      background: rgb(204, 116, 44);
+      color: white;    
+  }
+  .generar-reporte {
+    width: 100px;
+  }
+  
