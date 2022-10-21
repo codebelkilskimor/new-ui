@@ -10,12 +10,12 @@
             <form [formGroup]="loginForm" (ngSubmit)="showModal()">
                 <mat-form-field class="max-width" appearance="outline">
                     <mat-label>Correo Electronico</mat-label>
-                    <input matInput [disabled]="onRequest" autocomplete="disabled" formControlName="email" placeholder="Ingrese su correo electronico" />
+                    <input matInput [disabled]="onRequest" autocomplete="disabled" formControlName="correo_est" placeholder="Ingrese su correo electronico" />
                     <mat-icon matSuffix>person</mat-icon>
-                    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                    <mat-error *ngIf="loginForm.get('correo_est')?.hasError('required')">
                         Este campo es requerido
                     </mat-error>
-                    <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                    <mat-error *ngIf="loginForm.get('correo_est')?.hasError('email')">
                         Ingrese un email valido
                     </mat-error>
                 </mat-form-field>
@@ -29,7 +29,7 @@
           }}</mat-icon>
         </button>
                 </mat-form-field>
-                <button mat-raised-button color="primary" class="btn-block" [disabled]="loginForm.invalid" [class.orange-button]="loginForm.valid">
+                <button mat-raised-button color="primary" class="btn-block" type="submit" [disabled]="loginForm.invalid" [class.orange-button]="loginForm.valid">
         <ng-container *ngIf="!onRequest">
           Iniciar Sesion
           <div

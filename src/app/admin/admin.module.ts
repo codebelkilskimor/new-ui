@@ -16,6 +16,7 @@ import { NavbarSearchComponent } from './components/navbar-search/navbar-search.
 import { SearcherBComponent } from './pages/searcher-b/searcher-b.component';
 import { TablaSearchComponent } from './components/tabla-saerch/tabla-search.component';
 import { TablaProyectoComponent } from './components/tabla-proyecto/tabla-proyecto.component';
+import { ResultadosBusquedaComponent } from './components/resultados-busqueda/resultados-busqueda.component';
 
 
 
@@ -32,6 +33,7 @@ import { TablaProyectoComponent } from './components/tabla-proyecto/tabla-proyec
     SearcherComponent,
     NavbarSearchComponent,
     SearcherBComponent,
+    ResultadosBusquedaComponent,
 
 
   ],
