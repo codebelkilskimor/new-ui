@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-searcher',
-  templateUrl: './searcher.component.html',
-  styleUrls: ['./searcher.component.scss']
+  selector: 'app-resultados-busqueda',
+  templateUrl: './resultados-busqueda.component.html',
+  styleUrls: ['./resultados-busqueda.component.scss']
 })
-export class SearcherComponent implements OnInit {
+export class ResultadosBusquedaComponent implements OnInit {
+  @Input() titulo: string =''
 
-
- 
   onRequest: boolean = false;
   showTable: boolean = false
   reporte: string = '';
@@ -24,5 +23,4 @@ export class SearcherComponent implements OnInit {
       this.showTable = true
     }, 1000);
   }
-
 }
