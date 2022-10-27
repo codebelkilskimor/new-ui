@@ -8,10 +8,10 @@
         <div class="col-md-12 mt-1">
             <table class="table table-hover table-bordered table-striped">
                 <tbody>
-                    <tr *ngFor="let role of data.roles">
+                    <tr *ngFor="let role of data.roles" (click)="rolSeleccionado = role.nombre">
                         <td>
-                            <mat-icon class="icon" matSuffix>{{role.icon}}</mat-icon>
-                            <strong>{{role.nombre}}</strong>
+                            <mat-icon class="icon" matSuffix>{{ role.icon }}</mat-icon>
+                            <strong>{{ role.nombre }}</strong>
                         </td>
                     </tr>
                 </tbody>
@@ -20,9 +20,14 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <button mat-raised-button color="accent" class="btn-block orange-button" (click)=" close() ">
-        Continuar <mat-icon class="icon " matSuffix>chevron_right</mat-icon>
+            <button mat-raised-button color="accent" class="btn-block orange-button" (click)="continuar()">
+        Continuar <mat-icon class="icon" matSuffix>chevron_right</mat-icon>
       </button>
+        </div>
+        <div class="col-md-12">
+            <button mat-raised-button color="accent" class="btn-block orange-button-transparent" (click)="close()">
+          Cancelar <mat-icon class="icon" matSuffix>cancel</mat-icon>
+        </button>
         </div>
     </div>
 </div>

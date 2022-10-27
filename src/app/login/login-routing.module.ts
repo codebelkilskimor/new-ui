@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PublicGuard } from '../guards/public.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { PolicyComponent } from './pages/policy/policy.component';
+import { BeforeLoginService } from '../services/before-login.service';
+import { AfterLoginService } from '../services/after-login.service';
 
 const routes: Routes = [
   {
@@ -13,12 +14,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [PublicGuard],
+    canActivate: [BeforeLoginService],
   },
   {
     path: 'policy',
     component: PolicyComponent,
-    canActivate: [PublicGuard],
+    canActivate: [AfterLoginService],
   }
 ];
 
