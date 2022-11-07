@@ -20,7 +20,6 @@ export class SearcherComponent implements OnInit {
   sendRequest() {
     this.onRequest = true;
     this.showTable = false
-    this.buscProServ.getProyectosBuscador(this.filtros).subscribe(resp => console.log(resp))
     setTimeout(() => {
       this.onRequest = false;
       this.showTable = true

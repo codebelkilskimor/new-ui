@@ -1,5 +1,4 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 body {
     height: 100vh;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -21,6 +20,7 @@ body {
 .fondo-blanco {
     background-color: #fff;
 }
+
 //Navbar//
 .botones-rutas {
     display: flex;
@@ -40,7 +40,6 @@ body {
 }
 
 //end Navbar//
-
 .contenedor-max-app {
     width: 90%;
     max-width: 1280px;
@@ -119,25 +118,33 @@ body {
     background-color: #00e5ff;
     color: #fff;
 }
-.page-style{
+
+.page-style {
     background-color: #00e5ff;
     height: 100%;
 }
+
 //buscador//
-.body-searcher{
+.body-searcher {
     background-color: white;
-    height:100%;
-  } 
-  .fondo{
-      background:white;
-      height:auto;
-      
-  }
-  button{
-      background: rgb(204, 116, 44);
-      color: white;    
-  }
-  .generar-reporte {
+    height: 100%;
+}
+
+.fondo {
+    background: white;
+    height: auto;
+}
+
+button {
+    background: rgb(204, 116, 44);
+    color: white;
+}
+
+.generar-reporte {
     width: 100px;
-  }
-  
+}
+
+.ngx-pagination .current {
+    background: #ea8500 !important;
+    background-color: #ea8500 !important;
+}

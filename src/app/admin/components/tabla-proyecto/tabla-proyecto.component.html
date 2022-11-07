@@ -1,48 +1,47 @@
-<div class="resultados-buscador-tarjeta">
+<a class="resultados-buscador-tarjeta" *ngFor="let res of resultados | paginate: config">
     <div class="contenedor-flex-tarjeta-buscador">
         <h3 class="titulo-resultado">
-
+            {{ res.titulo | uppercase }}
         </h3>
-        <p class="descripcion-resultado">
-
-        </p>
-        <h5 class="subtitulo-resultados">
-
-        </h5>
-        <p class="texto-resultado"></p>
+        <div class="descripcion-resultado">
+            {{ res.descripcion }}
+        </div>
+        <h3 class="subtitulo-resultados">
+            Integrantes
+        </h3>
+        <div class="texto-resultado">
+            <div *ngFor="let participantes of res.participantes; let i = index">{{ participantes.nombres }} {{ participantes.apellidos }}</div>
+        </div>
     </div>
     <div class="contenedor-flex-tarjeta-buscador">
         <div class="subcontenedor-resultados-tarjeta">
-            <span class="subtitulo-resultados">
-                
-            </span>
+            <h3 class="subtitulo-resultados">
+                Programa:
+            </h3>
             <span class="texto-resultado">
-
+                {{ res.nombre_programa }}
             </span>
         </div>
-        <h5 class="subtitulo-resultados">
-            <span class="subtitulo-resultados">
-                
-            </span>
+        <div class="subcontenedor-resultados-tarjeta">
+            <h3 class="subtitulo-resultados">
+                Facultad:
+            </h3>
             <span class="texto-resultado">
-                
+                {{ res.nombre_facultad }}
             </span>
-        </h5>
-        <h5 class="subtitulo-resultados">
-            <span class="subtitulo-resultados">
-                
-            </span>
+        </div>
+        <div class="subcontenedor-resultados-tarjeta">
+            <h3 class="subtitulo-resultados">
+                Areas de conocimiento asociadas:
+            </h3>
             <span class="texto-resultado">
-                
+                <div *ngFor = "let areas of res.area_conocimientos">{{ areas.nombre }}</div>
             </span>
-        </h5>
-        <h5 class="subtitulo-resultados">
-            <span class="subtitulo-resultados">
-                
-            </span>
-            <span class="texto-resultado">
-                
-            </span>
-        </h5>
+        </div>
     </div>
+</a>
+<div class="d-flex justify-content-center">
+    <pagination-controls id="paginacion" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+        [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="regresarPagina($event)" (pageBoundsCorrection)="excepcionPaginacion($event)"></pagination-controls>
 </div>
+<br>

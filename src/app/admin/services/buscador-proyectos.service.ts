@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Proyecto } from '../interfaces/proyecto';
+import { Respuesta } from '../interfaces/proyecto';
 
 export const API_URL = environment.apiUrl
 
@@ -16,10 +16,10 @@ export class BuscadorProyectosService {
   ) { }
 
   getProyectosBuscador(data: any) {
-    return this.http.post<Proyecto>(`${API_URL}/proyectos`, data)
+    return this.http.post<Respuesta>(`${API_URL}/proyectos`, data)
   }
 
   getProyectoPorId(id: number) {
-    return this.http.get<Proyecto>(`${API_URL}/proyectos/${id}`)
+    return this.http.get<Respuesta>(`${API_URL}/proyectos/${id}`)
   }
 }

@@ -19,6 +19,7 @@ import { TablaProyectoComponent } from './components/tabla-proyecto/tabla-proyec
 import { ResultadosBusquedaComponent } from './components/resultados-busqueda/resultados-busqueda.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NoResultadosComponent } from './components/no-resultados/no-resultados.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -47,7 +48,8 @@ import { NoResultadosComponent } from './components/no-resultados/no-resultados.
     AdminRoutingModule,
     SharedModule,
     MaterialModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }

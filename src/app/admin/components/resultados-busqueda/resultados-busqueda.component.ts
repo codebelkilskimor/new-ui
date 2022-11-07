@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BuscadorProyectosService } from '../../services/buscador-proyectos.service';
-import { Proyecto, ProyectoDetalle } from '../../interfaces/proyecto';
+import { Proyecto } from '../../interfaces/proyecto';
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
   selector: 'app-resultados-busqueda',
@@ -15,7 +16,8 @@ export class ResultadosBusquedaComponent implements OnInit {
   onRequest: boolean = false;
   showTable: boolean = false
   reporte: string = '';
-  resultadosBusqueda: ProyectoDetalle[] = []
+  resultadosBusqueda: Proyecto[] = []
+
   constructor(
     private buscProServ: BuscadorProyectosService
   ) { }
@@ -26,8 +28,7 @@ export class ResultadosBusquedaComponent implements OnInit {
     this.onRequest = true;
     this.showTable = false
     this.buscProServ.getProyectosBuscador(this.filtros).subscribe(resp => {
-      this.resultadosBusqueda = resp.proyectos.data
-      console.log(this.resultadosBusqueda)
+      this.resultadosBusqueda = resp.proyectos
       this.onRequest = false
       this.showTable = true
     })
@@ -35,5 +36,9 @@ export class ResultadosBusquedaComponent implements OnInit {
 
   getFiltros(e: any) {
     this.filtros = e
+  }
+
+  paginaFiltros(e: any) {
+    this.filtros.page = e
   }
 }
