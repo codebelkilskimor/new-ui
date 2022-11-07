@@ -17,6 +17,8 @@ import { SearcherBComponent } from './pages/searcher-b/searcher-b.component';
 import { TablaSearchComponent } from './components/tabla-saerch/tabla-search.component';
 import { TablaProyectoComponent } from './components/tabla-proyecto/tabla-proyecto.component';
 import { ResultadosBusquedaComponent } from './components/resultados-busqueda/resultados-busqueda.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { NoResultadosComponent } from './components/no-resultados/no-resultados.component';
 
 
 
@@ -34,6 +36,8 @@ import { ResultadosBusquedaComponent } from './components/resultados-busqueda/re
     NavbarSearchComponent,
     SearcherBComponent,
     ResultadosBusquedaComponent,
+    PaginationComponent,
+    NoResultadosComponent,
 
 
   ],

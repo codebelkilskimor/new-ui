@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { AdminModule } from './admin/admin.module';
 import { NgChartsModule } from 'ng2-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { JwtInterceptorService } from './interceptor/jwt-interceptor.service';
 
@@ -38,7 +39,8 @@ import { JwtInterceptorService } from './interceptor/jwt-interceptor.service';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxPaginationModule
   ],
   exports: [MaterialModule],
   providers: [

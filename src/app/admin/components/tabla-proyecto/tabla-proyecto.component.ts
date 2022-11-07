@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tabla-proyecto',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabla-proyecto.component.scss']
 })
 export class TablaProyectoComponent implements OnInit {
-
+  @Input() resultados: any
   constructor() { }
 
   ngOnInit(): void {

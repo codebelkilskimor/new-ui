@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { tap } from 'rxjs';
 import { Filtros } from '../interfaces/filters.interface';
 import { FiltersService } from '../services/filters.service';
@@ -11,7 +11,18 @@ import { FiltersService } from '../services/filters.service';
 export class FiltersComponent implements OnInit {
   toggleFilters: boolean = false
   arrFiltros: Filtros[] = []
-  arrFilter: string[] = []
+  arrEstados: any[] = []
+  arrFacultad: any[] = []
+  arrPrograma: any[] = []
+  arrArea: any[] = []
+  objFiltros: any = {
+    estado: null,
+    facultad: null,
+    programa: null,
+    areaConocimiento: null
+  }
+  @Output() filtros: EventEmitter<any> = new EventEmitter();
+
   constructor(
     private filterServ: FiltersService
   ) { }
@@ -22,5 +33,33 @@ export class FiltersComponent implements OnInit {
 
   toggleFilter() {
     this.toggleFilters = !this.toggleFilters
+  }
+
+  setValorFiltro(key: string, value: any) {
+    switch(key) {
+      case 'estado':
+        this.buscarElemArreglo(this.arrEstados, value, key)
+        break;
+      case 'facultad':
+        this.buscarElemArreglo(this.arrFacultad, value, key)
+        break;
+      case 'programa':
+        this.buscarElemArreglo(this.arrPrograma, value, key)
+        break;
+      case 'areaConocimiento':
+        this.buscarElemArreglo(this.arrArea, value, key)
+        break;
+    }
+  }
+
+  buscarElemArreglo(arreglo: any[], valorFiltro: any, filtroKey: string) {
+    const indiceBuscar = arreglo.findIndex(elem => elem === valorFiltro);
+    (indiceBuscar > -1) ? arreglo.splice(indiceBuscar, 1)  : arreglo.push(valorFiltro)
+    this.objFiltros[filtroKey] = arreglo
+    this.retornarFiltros()
+  }
+
+  retornarFiltros() {
+    this.filtros.emit(this.objFiltros)
   }
 }

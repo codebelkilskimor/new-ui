@@ -1,3 +1,3 @@
 <app-navbar-search></app-navbar-search>
-<app-filters></app-filters>
-<app-resultados-busqueda titulo="Buscador de Proyectos"></app-resultados-busqueda>
+<app-filters (filtros)="getFiltros($event)"></app-filters>
+<app-resultados-busqueda [filtros]="filtros" titulo="Buscador de Proyectos" tituloResultados="Nombre del proyecto:"></app-resultados-busqueda>

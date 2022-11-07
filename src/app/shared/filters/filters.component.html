@@ -10,8 +10,8 @@
                 <mat-icon>expand_more</mat-icon>
             </div>
             <mat-selection-list #filterList>
-                <mat-list-option checkboxPosition="before" *ngFor="let subel of el.elems" [value]="subel.key">
-                    {{ subel.value }}
+                <mat-list-option (click)="setValorFiltro(el.key, subel.value)" checkboxPosition="before" *ngFor="let subel of el.elems" [value]="subel.value">
+                    {{ subel.name }}
                 </mat-list-option>
             </mat-selection-list>
         </div>
