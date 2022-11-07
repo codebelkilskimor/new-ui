@@ -20,6 +20,7 @@ import { ResultadosBusquedaComponent } from './components/resultados-busqueda/re
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NoResultadosComponent } from './components/no-resultados/no-resultados.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DialogDetalleProyectoComponent } from './dialogs/dialog-detalle-proyecto/dialog-detalle-proyecto.component';
 
 
 
@@ -39,6 +40,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ResultadosBusquedaComponent,
     PaginationComponent,
     NoResultadosComponent,
+    DialogDetalleProyectoComponent,
 
 
   ],

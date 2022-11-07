@@ -148,3 +148,54 @@ button {
     background: #ea8500 !important;
     background-color: #ea8500 !important;
 }
+
+.titulo-resultado {
+    color: #ea8500;
+    text-decoration: underline;
+    margin-top: 0;
+    margin-bottom: 5px !important;
+}
+
+.descripcion-resultado {
+    color: #6f6f6f;
+    text-align: justify;
+    text-align-last: left;
+    margin-bottom: 10px;
+}
+
+.subtitulo-resultados {
+    color: #ea8500;
+    margin-bottom: 5px !important;
+}
+
+.resultados-buscador-tarjeta {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid rgba(111, 111, 111, 0.85);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.contenedor-flex-tarjeta-buscador {
+    width: 50%;
+}
+
+.texto-resultado {
+    color: #6f6f6f;
+    display: flex;
+}
+
+.texto-resultado div,
+.texto-resultado a {
+    border: 1px solid #6f6f6f;
+    padding: 5px;
+    margin: 5px 10px 5px 0;
+    border-radius: 5px;
+}
+
+.subcontenedor-resultados-tarjeta {
+    margin-bottom: 10px;
+}

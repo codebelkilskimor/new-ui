@@ -1,6 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { PaginationInstance } from 'ngx-pagination';
 import { Proyecto } from '../../interfaces/proyecto';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogDetalleProyectoComponent } from '../../dialogs/dialog-detalle-proyecto/dialog-detalle-proyecto.component';
+import { BuscadorProyectosService } from '../../services/buscador-proyectos.service';
 
 @Component({
   selector: 'app-tabla-proyecto',
@@ -26,7 +29,10 @@ export class TablaProyectoComponent implements OnInit {
     screenReaderPageLabel: 'página',
     screenReaderCurrentLabel: `Estas en la página`,
   };
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+    private buscadorServ: BuscadorProyectosService
+  ) { }
 
   ngOnInit(): void {
     this.config.totalItems = this.resultados.length
@@ -38,5 +44,23 @@ export class TablaProyectoComponent implements OnInit {
 
   excepcionPaginacion(e: any) {
     console.error(`Página ${e} no existe.`);
+  }
+
+  buscarProyectoId(id: number) {
+    return new Promise((resolve) => {
+      this.buscadorServ.getProyectoPorId(id).subscribe(resp => {
+        if (resp.success) resolve(resp.proyectos)
+      })
+    })
+  }
+
+  async abrirModal(id: number) {
+    this.dialog.open(DialogDetalleProyectoComponent, {
+      data: {
+        proyecto: await this.buscarProyectoId(id)
+      },
+      maxWidth: '600px',
+      width: '90%'
+    });
   }
 }
