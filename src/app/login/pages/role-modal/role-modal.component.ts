@@ -7,6 +7,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./role-modal.component.scss']
 })
 export class RoleModalComponent implements OnInit {
+  rolSeleccionado: string = ''
   constructor( public dialogRef: MatDialogRef<RoleModalComponent>,
                @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -14,7 +15,16 @@ export class RoleModalComponent implements OnInit {
   }
 
   close() {
-    this.dialogRef.close({success: true})
+    this.dialogRef.close({
+      success: false
+    })
+  }
+
+  continuar() {
+    this.dialogRef.close({
+      success: true,
+      role: this.rolSeleccionado
+    })
   }
 
 }

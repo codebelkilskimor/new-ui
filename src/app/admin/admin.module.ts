@@ -17,6 +17,10 @@ import { SearcherBComponent } from './pages/searcher-b/searcher-b.component';
 import { TablaSearchComponent } from './components/tabla-saerch/tabla-search.component';
 import { TablaProyectoComponent } from './components/tabla-proyecto/tabla-proyecto.component';
 import { ResultadosBusquedaComponent } from './components/resultados-busqueda/resultados-busqueda.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { NoResultadosComponent } from './components/no-resultados/no-resultados.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DialogDetalleProyectoComponent } from './dialogs/dialog-detalle-proyecto/dialog-detalle-proyecto.component';
 
 
 
@@ -34,6 +38,9 @@ import { ResultadosBusquedaComponent } from './components/resultados-busqueda/re
     NavbarSearchComponent,
     SearcherBComponent,
     ResultadosBusquedaComponent,
+    PaginationComponent,
+    NoResultadosComponent,
+    DialogDetalleProyectoComponent,
 
 
   ],
@@ -43,7 +50,8 @@ import { ResultadosBusquedaComponent } from './components/resultados-busqueda/re
     AdminRoutingModule,
     SharedModule,
     MaterialModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }

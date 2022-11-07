@@ -1,88 +1,110 @@
 [{
         "nombre": "Estado",
+        "key": "estado",
         "elems": [{
                 "key": "en_propuesta",
+                "name": "En Propuesta",
                 "value": "En Propuesta"
             },
             {
                 "key": "en_desarrollo",
+                "name": "En Desarrollo",
                 "value": "En Desarrollo"
             },
             {
                 "key": "en_correcciones",
+                "name": "En Correcciones",
                 "value": "En Correcciones"
             },
             {
                 "key": "finalizado",
-                "value": "Finalizado"
+                "name": "Finalizado",
+                "value": "En Finalizado"
             }
         ]
     },
     {
         "nombre": "Facultad",
+        "key": "facultad",
         "elems": [{
                 "key": "ingenieria",
-                "value": "Ingeniería"
+                "name": "Ingeniería",
+                "value": "3"
             },
             {
                 "key": "ciencias_juridicas",
-                "value": "Ciencias Jurídicas"
+                "name": "Ciencias Jurídicas",
+                "value": "5"
             },
             {
                 "key": "humanidades",
-                "value": "Humanidades"
+                "name": "Humanidades",
+                "value": "2"
             },
             {
-                "key": "pedagogia_infantil",
-                "value": "Pedagogía Infantil"
+                "key": "psicologia",
+                "name": "Psicología",
+                "value": "1"
             },
             {
-                "key": "ciencias_politicas",
-                "value": "Ciencias Politicas"
+                "key": "ciencias_economicas",
+                "name": "Ciencias Económicas",
+                "value": "4"
             }
         ]
     },
     {
         "nombre": "Programa",
+        "key": "programa",
         "elems": [{
                 "key": "ing_sistemas",
-                "value": "Ingeniería de Sistemas"
+                "name": "Ingeniería de Sistemas",
+                "value": "10"
             },
             {
                 "key": "psicologia",
-                "value": "Psicología"
+                "name": "Psicología",
+                "value": "1"
             },
             {
                 "key": "derecho",
-                "value": "Derecho"
+                "name": "Derecho",
+                "value": "13"
             },
             {
-                "key": "pedagogia_infantil",
-                "value": "Pedagogía Infantil"
+                "key": "educacion_infantil",
+                "name": "Educación Infantil",
+                "value": "2"
             },
             {
                 "key": "ciencias_politicas",
-                "value": "Ciencias Politicas"
+                "name": "Ciencias Politicas",
+                "value": "12"
             }
         ]
     },
     {
         "nombre": "Area De Conocimiento",
+        "key": "areaConocimiento",
         "elems": [{
                 "key": "area_uno",
-                "value": "Area 1"
+                "name": "Area 1",
+                "value": "1"
             },
             {
                 "key": "area_dos",
-                "value": "Area 2"
+                "name": "Area 2",
+                "value": "2"
             },
             {
                 "key": "area_tres",
-                "value": "Area 3"
+                "name": "Area 3",
+                "value": "3"
             },
             {
                 "key": "area_cuatro",
-                "value": "Area 4"
+                "name": "Area 4",
+                "value": "4"
             }
         ]
     }

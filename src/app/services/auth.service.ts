@@ -9,11 +9,11 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   setToken(token: string): void {
-    localStorage.setItem('accessToken', token);
+    localStorage.setItem('token', token);
   }
 
   getCurrentToken() {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('token');
     if (isNotNullOrUndefined(token)) {
       return token;
     } else {
@@ -22,6 +22,6 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return localStorage.getItem('accessToken') !== null;
+    return localStorage.getItem('token') !== null;
   }
 }

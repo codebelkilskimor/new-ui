@@ -13,7 +13,15 @@ export class LoginService {
     private http: HttpClient
   ) { }
 
-  iniciarSesion(data: any){
+  getRoles(data: any){
     return this.http.post(`${ API_URL }/auth/prevLogin`, data);
+  }
+
+  iniciarSesion(data: any) {
+    return this.http.post(`${ API_URL }/auth/login`, data);
+  }
+
+  aceptarPoliticas(data: any) {
+    return this.http.post(`${ API_URL }/auth/aceptar-politicas`, data);
   }
 }

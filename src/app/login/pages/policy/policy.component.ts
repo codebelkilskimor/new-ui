@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { LoggedService } from '../../../services/logged.service';
+import { LoginService } from '../../services/login.service';
+import { TokenService } from '../../../services/token.service';
 
 @Component({
   selector: 'app-policy',
@@ -15,7 +17,9 @@ export class PolicyComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
-    private logged: LoggedService
+    private logged: LoggedService,
+    private loginServ: LoginService,
+    private tokenServ: TokenService
   ) {}
 
   ngOnInit(): void {
@@ -29,13 +33,13 @@ export class PolicyComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  accept() {
-    const user = localStorage.getItem('user_data');
-    // @ts-ignore
-    this.auth.setToken(user);
-    localStorage.removeItem('user_data');
-    this.logged.changeAuthStatus(true)
-    this.router.navigateByUrl('/admin/reportes');
-  }
+  
 
+  accept() {
+    this.logged.changeAuthStatus(true)
+    const usuData = JSON.parse(localStorage.getItem('user_data') || '')
+    this.loginServ.aceptarPoliticas({email: usuData.correo_est}).subscribe(
+      data => this.router.navigateByUrl('/admin/reportes')
+    )
+  }
 }

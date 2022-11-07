@@ -5,6 +5,8 @@ import { AuthService } from '../../../services/auth.service';
 import { RoleModalComponent } from '../role-modal/role-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from '../../services/login.service';
+import { TokenService } from '../../../services/token.service';
+import { LoggedService } from '../../../services/logged.service';
 
 export interface LoginUser {
   email: string;
@@ -29,22 +31,23 @@ export class LoginComponent implements OnInit {
       Validators.required,
     ]),
     password: new FormControl(this.user.password, [Validators.required]),
+    rol: new FormControl()
   });
 
   constructor(
     private router: Router,
     private auth: AuthService,
+    private logged: LoggedService,
     public dialog: MatDialog,
-    private loginServ: LoginService
+    private loginServ: LoginService,
+    private tokenServ: TokenService
   ) {}
   
   ngOnInit(): void {}
 
   showModal() {
-    console.log(this.loginForm.value)
-    
     this.loginServ
-    .iniciarSesion(this.loginForm.value)
+    .getRoles(this.loginForm.value)
     .subscribe((resp: any) => {
       console.log(resp);
       const roles = resp.roles;
@@ -55,21 +58,38 @@ export class LoginComponent implements OnInit {
             disableClose: true,
           });
           dialogRef.afterClosed().subscribe((result) => {
+            console.log(result);
             if (result.success) {
-              this.login();
+              this.login(result.role);
             }
           });
         }, 2000);
       }
     );
-
-
-   
   }
 
-  login() {
-    const user = this.loginForm.getRawValue();
-    localStorage.setItem('user_data', JSON.stringify(user));
-    this.router.navigate(['/policy']);
+  iniciarSesion() {
+    return new Promise(resolve => {
+      this.loginServ.iniciarSesion(this.loginForm.value).subscribe(
+        (data: any) => resolve(data)
+      )
+    })
+  }
+
+  async login(rol: string) {
+    this.loginForm.patchValue({
+      rol: rol
+    })
+    localStorage.setItem('user_data', JSON.stringify(this.loginForm.value));
+    localStorage.setItem('rol', btoa(rol));
+    const sessionData: any = await this.iniciarSesion()
+    this.tokenServ.set(sessionData.access_token)
+    if (sessionData.politicas == 0) {
+      this.router.navigate(['/policy']);
+    } else {
+      this.logged.changeAuthStatus(true)
+      localStorage.removeItem('user_data')
+      this.router.navigateByUrl('/admin/reportes')
+    }  
   }
 }

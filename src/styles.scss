@@ -1,5 +1,4 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 body {
     height: 100vh;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -21,6 +20,7 @@ body {
 .fondo-blanco {
     background-color: #fff;
 }
+
 //Navbar//
 .botones-rutas {
     display: flex;
@@ -40,7 +40,6 @@ body {
 }
 
 //end Navbar//
-
 .contenedor-max-app {
     width: 90%;
     max-width: 1280px;
@@ -119,25 +118,84 @@ body {
     background-color: #00e5ff;
     color: #fff;
 }
-.page-style{
+
+.page-style {
     background-color: #00e5ff;
     height: 100%;
 }
+
 //buscador//
-.body-searcher{
+.body-searcher {
     background-color: white;
-    height:100%;
-  } 
-  .fondo{
-      background:white;
-      height:auto;
-      
-  }
-  button{
-      background: rgb(204, 116, 44);
-      color: white;    
-  }
-  .generar-reporte {
+    height: 100%;
+}
+
+.fondo {
+    background: white;
+    height: auto;
+}
+
+button {
+    background: rgb(204, 116, 44);
+    color: white;
+}
+
+.generar-reporte {
     width: 100px;
-  }
-  
+}
+
+.ngx-pagination .current {
+    background: #ea8500 !important;
+    background-color: #ea8500 !important;
+}
+
+.titulo-resultado {
+    color: #ea8500;
+    text-decoration: underline;
+    margin-top: 0;
+    margin-bottom: 5px !important;
+}
+
+.descripcion-resultado {
+    color: #6f6f6f;
+    text-align: justify;
+    text-align-last: left;
+    margin-bottom: 10px;
+}
+
+.subtitulo-resultados {
+    color: #ea8500;
+    margin-bottom: 5px !important;
+}
+
+.resultados-buscador-tarjeta {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid rgba(111, 111, 111, 0.85);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.contenedor-flex-tarjeta-buscador {
+    width: 50%;
+}
+
+.texto-resultado {
+    color: #6f6f6f;
+    display: flex;
+}
+
+.texto-resultado div,
+.texto-resultado a {
+    border: 1px solid #6f6f6f;
+    padding: 5px;
+    margin: 5px 10px 5px 0;
+    border-radius: 5px;
+}
+
+.subcontenedor-resultados-tarjeta {
+    margin-bottom: 10px;
+}

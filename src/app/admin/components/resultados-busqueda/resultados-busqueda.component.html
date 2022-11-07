@@ -1,48 +1,20 @@
 <div class="body-searcher">
     <div class="fondo">
         <div class="contenedor-max-app">
-            <div class="row mt-5">
-                <h2 class="color-negro">{{ titulo }}</h2>
-            </div>   
-             
-            <div class="ancho-completo">  
-                <mat-form-field appearance="fill" class="ancho-completo no-padding">          
-                    <mat-label> NOMBRE DE PROYECTO</mat-label>
+            <h1 class="titulo-buscador">{{ titulo | uppercase }}</h1>
+            <div class="ancho-completo">
+                <mat-form-field appearance="fill" class="ancho-completo no-padding">
+                    <mat-label>{{ tituloResultados }}</mat-label>
                     <input matInput>
-                </mat-form-field>  
-                <button mat-button class="orange-button generar-reporte  ml-2" (click)="sendRequest()"><i class="fa fa-search"></i>  
+                </mat-form-field>
+                <button mat-button class="orange-button generar-reporte" (click)="sendRequest()"><i class="fa fa-search"></i>  
                 </button>
-
+            </div>
+            <app-loader class="ancho-completo" *ngIf="onRequest" [element]="'Reporte de datos'"></app-loader>
+            <div *ngIf="showTable">
+                <div class="barra-resultados">RESULTADOS:</div>
+                <app-tabla-proyecto [resultados]="resultadosBusqueda"></app-tabla-proyecto>
+            </div>
         </div>
-            <br>
-      <h2 class="color-negro">Resultados:</h2>
-      <app-loader class="ancho-completo" *ngIf="onRequest" [element]="'Reporte de datos'"></app-loader>
-
-    <ng-container *ngIf="showTable==true">
-        <app-tabla-proyecto></app-tabla-proyecto>
-    </ng-container>
-
-        <br>
-        <div class="row mt-5">
-            <nav aria-label="Page navigation example" >
-                <ul class="pagination" >
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-                </ul>
-            </nav>
-        </div>
-        </div>       
     </div>
 </div>
-
