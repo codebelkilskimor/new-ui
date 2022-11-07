@@ -25,8 +25,9 @@ export class ResultadosBusquedaComponent implements OnInit {
   ngOnInit(): void {
   }
   sendRequest() {
-    this.onRequest = true;
+    this.onRequest = true
     this.showTable = false
+    console.log(this.filtros)
     this.buscProServ.getProyectosBuscador(this.filtros).subscribe(resp => {
       this.resultadosBusqueda = resp.proyectos
       this.onRequest = false
@@ -40,5 +41,9 @@ export class ResultadosBusquedaComponent implements OnInit {
 
   paginaFiltros(e: any) {
     this.filtros.page = e
+  }
+
+  setNombreFiltro(e: any) {
+    this.filtros.titulo = e.target.value
   }
 }

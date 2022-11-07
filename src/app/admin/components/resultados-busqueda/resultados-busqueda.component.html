@@ -5,9 +5,9 @@
             <div class="ancho-completo">
                 <mat-form-field appearance="fill" class="ancho-completo no-padding">
                     <mat-label>{{ tituloResultados }}</mat-label>
-                    <input matInput>
+                    <input matInput (keyup)="setNombreFiltro($event)">
                 </mat-form-field>
-                <button mat-button class="orange-button generar-reporte" (click)="sendRequest()"><i class="fa fa-search"></i>  
+                <button mat-button class="orange-button generar-reporte" (click)="sendRequest()"><i class="fa fa-search"></i>
                 </button>
             </div>
             <app-loader class="ancho-completo" *ngIf="onRequest" [element]="'Reporte de datos'"></app-loader>
