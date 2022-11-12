@@ -14,7 +14,8 @@
 .cont-filter {
     width: 25%;
     border-right: 1px solid #000;
-    ;
+    overflow-y: scroll;
+    height: 310px;
 }
 
 .no-border-right {
