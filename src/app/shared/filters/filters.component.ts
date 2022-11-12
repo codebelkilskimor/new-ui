@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { tap } from 'rxjs';
 import { Filtros } from '../interfaces/filters.interface';
 import { FiltersService } from '../services/filters.service';
 
@@ -10,7 +9,7 @@ import { FiltersService } from '../services/filters.service';
 })
 export class FiltersComponent implements OnInit {
   toggleFilters: boolean = false
-  arrFiltros: Filtros[] = []
+  arrFiltros: any[] = []
   arrEstados: any[] = []
   arrFacultad: any[] = []
   arrPrograma: any[] = []

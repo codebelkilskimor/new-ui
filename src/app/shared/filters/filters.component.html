@@ -6,12 +6,12 @@
     <div class="filters-row">
         <div class="cont-filter" *ngFor="let el of arrFiltros; let i = index" [ngClass]="{ 'no-border-right': i == 3 }">
             <div mat-subheader>
-                <strong>{{ el.nombre }}</strong>
+                <strong>{{ el.titulo }}</strong>
                 <mat-icon>expand_more</mat-icon>
             </div>
             <mat-selection-list #filterList>
-                <mat-list-option (click)="setValorFiltro(el.key, subel.value)" checkboxPosition="before" *ngFor="let subel of el.elems" [value]="subel.value">
-                    {{ subel.name }}
+                <mat-list-option (click)="setValorFiltro(el.key, subel.id)" checkboxPosition="before" *ngFor="let subel of el.contenido" [value]="subel.id">
+                    {{ subel.nombre }}
                 </mat-list-option>
             </mat-selection-list>
         </div>

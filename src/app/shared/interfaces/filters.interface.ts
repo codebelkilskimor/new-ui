@@ -1,11 +1,10 @@
 export interface Filtros {
-  nombre: string;
-  key: string;
-  elems: ElementosFiltros[];
+  titulo:    string;
+  key:       string;
+  contenido: Contenido[];
 }
 
-export interface ElementosFiltros {
-  key: string;
-  name: string;
-  value: string;
+export interface Contenido {
+  id:     number | string;
+  nombre: string;
 }
