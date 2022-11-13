@@ -127,11 +127,11 @@ export class HomeComponent implements OnInit {
     if (data.success) {
       this.dataReportes = data.data
       this.alServ.abrirAlerta(data.mensaje, 'success')
-      window.open(`${FILES_URL}/${data.ruta}`, '_blank')
+      this.showTable = true
+      setTimeout(() => window.open(`${FILES_URL}/${data.ruta}`, '_blank'), 1000)
     } else {
       this.alServ.abrirAlerta(data.mensaje, 'warning')
     }
     this.onRequest = false
-    this.showTable = false
   }
 }

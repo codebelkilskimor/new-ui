@@ -23,24 +23,18 @@
                 <mat-form-field class="max-width" appearance="outline">
                     <mat-label>Contraseña</mat-label>
                     <input matInput [disabled]="onRequest" autocomplete="disabled" formControlName="password" [type]="hidePassword ? 'password' : 'text'" placeholder="Ingrese su contraseña" />
-                    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
-          <mat-icon>{{
-            hidePassword ? "visibility_off" : "visibility"
-          }}</mat-icon>
-        </button>
+                    <button mat-icon-button type="button" matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                      <mat-icon>{{ hidePassword ? "visibility_off" : "visibility" }}</mat-icon>
+                    </button>
                 </mat-form-field>
                 <button mat-raised-button color="primary" class="btn-block" type="submit" [disabled]="loginForm.invalid" [class.orange-button]="loginForm.valid">
-        <ng-container *ngIf="!onRequest">
-          Iniciar Sesion
-          <div
-            *ngIf="onRequest"
-            class="spinner-grow text-light spinner-grow-sm"
-            role="status"
-          >
-            <span class="sr-only">Loading...</span>
-          </div>
-        </ng-container>
-      </button>
+                  <ng-container *ngIf="!onRequest">
+                    Iniciar Sesion
+                    <div *ngIf="onRequest" class="spinner-grow text-light spinner-grow-sm" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </ng-container>
+                </button>
             </form>
             <p class="text-white texto-querido-usuario">
                 Querido usuario acá podrá realizar la gestión del conocimiento de la universidad San Buenaventura Bogotá, ingrese sus datos y posteriormente acepte los términos de seguridad

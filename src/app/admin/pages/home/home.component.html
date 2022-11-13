@@ -40,8 +40,8 @@
 
         <app-loader class="ancho-completo" *ngIf="onRequest" [element]="'Reporte de datos'"></app-loader>
 
-        <div *ngIf="showTable">
-            <h3 class="mt-3 mb-1 color-blanco ancho-completo">Resultados:</h3>
+        <div *ngIf="showTable" class="ancho-completo">
+            <h2 class="mt-3 mb-1 color-blanco ancho-completo">Resultados:</h2>
             <app-tabla-reportes [datosReportes]="dataReportes"></app-tabla-reportes>
         </div>
     </div>

@@ -20,6 +20,13 @@ export class RoleModalComponent implements OnInit {
     })
   }
 
+  setColor(id: number, rol: string) {
+    console.log(id, rol);
+    this.rolSeleccionado = rol
+    document.getElementById(`rol-${id}`)?.classList.add('selected-role-item')
+
+  }
+
   continuar() {
     this.dialogRef.close({
       success: true,

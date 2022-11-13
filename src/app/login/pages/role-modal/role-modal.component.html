@@ -8,7 +8,7 @@
         <div class="col-md-12 mt-1">
             <table class="table table-hover table-bordered table-striped">
                 <tbody>
-                    <tr *ngFor="let role of data.roles" (click)="rolSeleccionado = role.nombre">
+                    <tr *ngFor="let role of data.roles; let i = index" (click)="setColor(i, role.nombre)" id="rol-{{ i }}">
                         <td>
                             <mat-icon class="icon" matSuffix>{{ role.icon }}</mat-icon>
                             <strong>{{ role.nombre }}</strong>
@@ -20,14 +20,15 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <button mat-raised-button color="accent" class="btn-block orange-button" (click)="continuar()">
-        Continuar <mat-icon class="icon" matSuffix>chevron_right</mat-icon>
-      </button>
+            <button mat-raised-button color="accent" class="btn-block orange-button" style="margin-bottom: 10px;" (click)="continuar()">
+              Continuar <mat-icon class="icon" matSuffix>chevron_right</mat-icon>
+            </button>
         </div>
+        <br>
         <div class="col-md-12">
-            <button mat-raised-button color="accent" class="btn-block orange-button-transparent" (click)="close()">
-          Cancelar <mat-icon class="icon" matSuffix>cancel</mat-icon>
-        </button>
+            <button mat-raised-button color="accent" class="btn-block grey-button-transparent" (click)="close()">
+              Cancelar <mat-icon class="icon" matSuffix>cancel</mat-icon>
+            </button>
         </div>
     </div>
 </div>
