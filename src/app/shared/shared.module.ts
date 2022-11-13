@@ -6,12 +6,14 @@ import { MaterialModule } from '../material.module';
 import { RouterModule } from '@angular/router';
 import { SharedRoutingModule } from './shared-routing.module';
 import { FiltersComponent } from './filters/filters.component';
+import { AlertasComponent } from './alertas/alertas.component';
 
 @NgModule({
   declarations: [
     LoaderComponent,
     NavbarComponent,
-    FiltersComponent
+    FiltersComponent,
+    AlertasComponent
   ],
   imports: [
     CommonModule,

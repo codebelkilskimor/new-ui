@@ -1,0 +1,11 @@
+<span class="texto-snack color-verde" *ngIf="tipo === 'success'">
+  {{ texto }}&nbsp;&nbsp;<mat-icon aria-hidden="false" aria-label="success">check_circle</mat-icon>
+</span>
+
+<span class="texto-snack color-amarillo" *ngIf="tipo === 'warning'">
+  {{ texto }}&nbsp;&nbsp;<mat-icon aria-hidden="false" aria-label="warning">warning</mat-icon>
+</span>
+
+<span class="texto-snack color-rojo" *ngIf="tipo === 'error'">
+  {{ texto }}&nbsp;&nbsp;<mat-icon aria-hidden="false" aria-label="error">error</mat-icon>
+</span>

@@ -1,0 +1,37 @@
+[{
+        "nombre": "Proyectos con presupuesto",
+        "id": 1
+    },
+    {
+        "nombre": "Proyectos por convocatoria",
+        "id": 2
+    },
+    {
+        "nombre": "Proyectos que necesitan integrantes",
+        "id": 3
+    },
+    {
+        "nombre": "Proyectos de semillero",
+        "id": 4
+    },
+    {
+        "nombre": "Proyectos que son trabajo de grado",
+        "id": 5
+    },
+    {
+        "nombre": "Proyectos que son proyecto de aula",
+        "id": 6
+    },
+    {
+        "nombre": "Proyectos que son de investigadores independientes",
+        "id": 7
+    },
+    {
+        "nombre": "Proyectos por facultad",
+        "id": 8
+    },
+    {
+        "nombre": "Proyectos por programa",
+        "id": 9
+    }
+]
