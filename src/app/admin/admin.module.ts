@@ -4,11 +4,13 @@ import { MaterialModule } from '../material.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { HomeComponent } from './pages/home/home.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 import { CardsComponent } from './components/cards/cards.component';
-import { NgChartsModule } from 'ng2-charts';
 import { TablaRankingComponent } from './components/tabla-ranking/tabla-ranking.component';
 import { TablaReportesComponent } from './components/tabla-reportes/tabla-reportes.component';
 import { SearcherComponent } from './pages/searcher/searcher.component';
@@ -19,10 +21,7 @@ import { TablaProyectoComponent } from './components/tabla-proyecto/tabla-proyec
 import { ResultadosBusquedaComponent } from './components/resultados-busqueda/resultados-busqueda.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NoResultadosComponent } from './components/no-resultados/no-resultados.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { DialogDetalleProyectoComponent } from './dialogs/dialog-detalle-proyecto/dialog-detalle-proyecto.component';
-
-
 
 @NgModule({
   declarations: [
@@ -41,8 +40,6 @@ import { DialogDetalleProyectoComponent } from './dialogs/dialog-detalle-proyect
     PaginationComponent,
     NoResultadosComponent,
     DialogDetalleProyectoComponent,
-
-
   ],
   imports: [
     CommonModule,
