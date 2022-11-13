@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from '../../services/login.service';
 import { TokenService } from '../../../services/token.service';
 import { LoggedService } from '../../../services/logged.service';
+import { AlertasService } from '../../../services/alertas.service';
 
 export interface LoginUser {
   email: string;
@@ -36,21 +37,21 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private auth: AuthService,
     private logged: LoggedService,
     public dialog: MatDialog,
     private loginServ: LoginService,
-    private tokenServ: TokenService
+    private tokenServ: TokenService,
+    private alServ: AlertasService
   ) {}
-  
+
   ngOnInit(): void {}
 
   showModal() {
     this.loginServ
     .getRoles(this.loginForm.value)
     .subscribe((resp: any) => {
-      console.log(resp);
-      const roles = resp.roles;
+      if (resp.success) {
+        const roles = resp.roles;
         setTimeout(() => {
           const dialogRef = this.dialog.open(RoleModalComponent, {
             width: '550px',
@@ -58,14 +59,15 @@ export class LoginComponent implements OnInit {
             disableClose: true,
           });
           dialogRef.afterClosed().subscribe((result) => {
-            console.log(result);
             if (result.success) {
               this.login(result.role);
             }
           });
         }, 2000);
+      } else {
+        this.alServ.abrirAlerta(resp.mensaje, 'error')
       }
-    );
+    });
   }
 
   iniciarSesion() {
@@ -83,6 +85,10 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('user_data', JSON.stringify(this.loginForm.value));
     localStorage.setItem('rol', btoa(rol));
     const sessionData: any = await this.iniciarSesion()
+    if (sessionData.success == false) {
+      this.alServ.abrirAlerta(sessionData.mensaje, 'error')
+      return
+    }
     this.tokenServ.set(sessionData.access_token)
     if (sessionData.politicas == 0) {
       this.router.navigate(['/policy']);
@@ -90,6 +96,6 @@ export class LoginComponent implements OnInit {
       this.logged.changeAuthStatus(true)
       localStorage.removeItem('user_data')
       this.router.navigateByUrl('/admin/reportes')
-    }  
+    }
   }
 }

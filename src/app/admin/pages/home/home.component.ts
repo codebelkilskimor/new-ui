@@ -4,6 +4,8 @@ import { OpcionesReportes } from '../../interfaces/opcionesReportes';
 import { Reportes } from '../../interfaces/reportes';
 import { FacPrograma } from '../../interfaces/facPrograma';
 import { environment } from 'src/environments/environment';
+import { DatosReporte } from '../../interfaces/datosReporte';
+import { AlertasService } from '../../../services/alertas.service';
 
 export const FILES_URL = environment.filesUrl
 
@@ -23,9 +25,13 @@ export class HomeComponent implements OnInit {
   optsReportes: OpcionesReportes[] = [];
   programas: FacPrograma[] = [];
   facultades: FacPrograma[] = [];
+  dataReportes: DatosReporte[] = []
   filtros: any = {};
 
-  constructor(private reporServ: ReportesService) {}
+  constructor(
+    private reporServ: ReportesService,
+    private alServ: AlertasService
+  ) {}
 
   ngOnInit(): void {
     this.reporServ
@@ -119,10 +125,11 @@ export class HomeComponent implements OnInit {
 
   manejarRespuestaServicios(data: Reportes) {
     if (data.success) {
-      alert(data.mensaje)
+      this.dataReportes = data.data
+      this.alServ.abrirAlerta(data.mensaje, 'success')
       window.open(`${FILES_URL}/${data.ruta}`, '_blank')
     } else {
-      alert(data.mensaje)
+      this.alServ.abrirAlerta(data.mensaje, 'warning')
     }
     this.onRequest = false
     this.showTable = false
