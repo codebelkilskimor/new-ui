@@ -1,20 +1,34 @@
 <div class="body-searcher">
-    <div class="fondo">
-        <div class="contenedor-max-app">
-            <h1 class="titulo-buscador">{{ titulo | uppercase }}</h1>
-            <div class="ancho-completo">
-                <mat-form-field appearance="fill" class="ancho-completo no-padding">
-                    <mat-label>{{ tituloResultados }}</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <button mat-button class="orange-button generar-reporte" (click)="sendRequest()"><i class="fa fa-search"></i>  
-                </button>
-            </div>
-            <app-loader class="ancho-completo" *ngIf="onRequest" [element]="'Reporte de datos'"></app-loader>
-            <div *ngIf="showTable">
-                <div class="barra-resultados">RESULTADOS:</div>
-                <app-tabla-proyecto [resultados]="resultadosBusqueda"></app-tabla-proyecto>
-            </div>
-        </div>
+  <div class="fondo">
+    <div class="contenedor-max-app">
+      <h1 class="titulo-buscador">{{ titulo | uppercase }}</h1>
+      <div class="ancho-completo">
+        <mat-form-field
+          appearance="fill"
+          class="ancho-completo no-padding color-negro"
+        >
+          <mat-label>{{ tituloResultados }}</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <button
+          mat-button
+          class="orange-button generar-reporte"
+          (click)="sendRequest()"
+        >
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+      <app-loader
+        class="ancho-completo"
+        *ngIf="onRequest"
+        [element]="'Reporte de datos'"
+      ></app-loader>
+      <div *ngIf="showTable">
+        <div class="barra-resultados">RESULTADOS:</div>
+        <app-tabla-proyecto
+          [resultados]="resultadosBusqueda"
+        ></app-tabla-proyecto>
+      </div>
     </div>
+  </div>
 </div>

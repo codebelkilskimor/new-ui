@@ -1,23 +1,56 @@
 <mat-toolbar color="primary" class="no-padding navbar-custom">
-    <mat-toolbar-row class="no-padding">
-        <a class="no-border" routerLink="/admin/reportes">
-            <img style="max-width: 260px" class="align_self" src="/assets/img/logo.png" />
-        </a>
-        <span class="example-spacer"></span>
-        <a mat-button routerLink="/admin/dashboard" routerLinkActive="active">
-        <a mat-button routerLink="/admin/reportes" routerLinkActive="active"></a> DASHBOARD </a>
-        <a mat-button routerLink="/admin/buscador-proyecto" routerLinkActive="active">
-        <a mat-button routerLink="/admin/buscador-investigador" routerLinkActive="active"></a> BÚSQUEDA </a>
-        
-        
-        <button mat-button class="boton-logout" [matMenuTriggerFor]="menu">
+  <mat-toolbar-row class="no-padding">
+    <a class="no-border" routerLink="/admin/reportes">
+      <img
+        style="max-width: 260px"
+        class="align_self"
+        src="/assets/img/logo.png"
+      />
+    </a>
+    <span class="example-spacer"></span>
+    <a
+      mat-button
+      routerLink="/admin/dashboard"
+      routerLinkActive="active"
+      *ngIf="loggedIn"
+    >
+      DASHBOARD
+    </a>
+    <a
+      mat-button
+      routerLink="/admin/buscador-proyecto"
+      routerLinkActive="active"
+    >
+      BÚSQUEDA
+    </a>
+
+    <button
+      mat-button
+      class="boton-logout"
+      [matMenuTriggerFor]="menu"
+      *ngIf="loggedIn"
+    >
       <mat-icon>account_circle</mat-icon>
       <mat-menu #menu="matMenu">
-        <button (click) = "logout()" mat-menu-item>
+        <button (click)="logout()" mat-menu-item>
           <mat-icon>logout</mat-icon>
           <span>Logout</span>
         </button>
-        </mat-menu>
+      </mat-menu>
+    </button>
+    <button
+      mat-button
+      class="boton-logout"
+      [matMenuTriggerFor]="menu"
+      *ngIf="!loggedIn"
+    >
+      <mat-icon>account_circle</mat-icon>
+      <mat-menu #menu="matMenu">
+        <button (click)="login()" mat-menu-item>
+          <mat-icon>login</mat-icon>
+          <span>Login</span>
         </button>
-    </mat-toolbar-row>
+      </mat-menu>
+    </button>
+  </mat-toolbar-row>
 </mat-toolbar>

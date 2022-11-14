@@ -5,6 +5,7 @@ import { PrivateGuard } from '../guards/private.guard';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { SearcherComponent } from './pages/searcher/searcher.component';
 import { SearcherBComponent } from './pages/searcher-b/searcher-b.component';
+import { PublicGuard } from '../guards/public.guard';
 
 const routes: Routes = [
   {
@@ -25,12 +26,12 @@ const routes: Routes = [
   {
     path: 'buscador-proyecto',
     component: SearcherComponent,
-    canActivate: [PrivateGuard],
+    canActivate: [PublicGuard],
   },
   {
     path: 'buscador-investigador',
     component: SearcherBComponent,
-    canActivate: [PrivateGuard],
+    canActivate: [PublicGuard],
   },
 ];
 

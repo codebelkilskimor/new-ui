@@ -4,17 +4,23 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(
-    private logged: LoggedService,
-    private router: Router
-  ) { }
+  loggedIn = false;
+  constructor(private logged: LoggedService, private router: Router) {
+    this.logged.authStatus$.subscribe(
+      (logStatus) => (this.loggedIn = logStatus)
+    );
+  }
+
+  login() {
+    this.router.navigateByUrl('/login');
+  }
 
   logout(): void {
-    localStorage.clear()
-    this.logged.changeAuthStatus(false)
-    this.router.navigateByUrl('/login')
+    localStorage.clear();
+    this.logged.changeAuthStatus(false);
+    this.router.navigateByUrl('/login');
   }
 }
