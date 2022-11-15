@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 import { DatosReporte } from '../../interfaces/datosReporte';
 import { AlertasService } from '../../../services/alertas.service';
 
-export const FILES_URL = environment.filesUrl
+export const FILES_URL = environment.filesUrl;
 
 @Component({
   selector: 'app-home',
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   optsReportes: OpcionesReportes[] = [];
   programas: FacPrograma[] = [];
   facultades: FacPrograma[] = [];
-  dataReportes: DatosReporte[] = []
+  dataReportes: DatosReporte[] = [];
   filtros: any = {};
 
   constructor(
@@ -67,71 +67,81 @@ export class HomeComponent implements OnInit {
   }
 
   sendRequest() {
-    this.onRequest = true
-    this.showTable = false
-    this.showFacultades = false
-    this.showProgramas = false
-    this.filtros.rol = atob(localStorage.getItem('rol') || '')
+    this.onRequest = true;
+    this.showTable = false;
+    this.showFacultades = false;
+    this.showProgramas = false;
+    this.filtros.rol = atob(localStorage.getItem('rol') || '');
     switch (this.reporte.toString()) {
       case '1':
         this.reporServ
           .getProyectosPresupuesto(this.filtros)
-          .subscribe((resp) => this.manejarRespuestaServicios(resp))
+          .subscribe((resp) => this.manejarRespuestaServicios(resp));
         break;
       case '2':
         this.reporServ
           .getProyectosConvocatoria(this.filtros)
-          .subscribe((resp) => this.manejarRespuestaServicios(resp))
+          .subscribe((resp) => this.manejarRespuestaServicios(resp));
         break;
       case '3':
         this.reporServ
           .getProyectosNecesitanIntegrantes(this.filtros)
-          .subscribe((resp) => this.manejarRespuestaServicios(resp))
+          .subscribe((resp) => this.manejarRespuestaServicios(resp));
         break;
       case '4':
         this.reporServ
           .getProyectosSemillero(this.filtros)
-          .subscribe((resp) => this.manejarRespuestaServicios(resp))
+          .subscribe((resp) => this.manejarRespuestaServicios(resp));
         break;
       case '5':
         this.reporServ
           .getProyectosGrado(this.filtros)
-          .subscribe((resp) => this.manejarRespuestaServicios(resp))
+          .subscribe((resp) => this.manejarRespuestaServicios(resp));
         break;
       case '6':
         this.reporServ
           .getProyectosAula(this.filtros)
-          .subscribe((resp) => this.manejarRespuestaServicios(resp))
+          .subscribe((resp) => this.manejarRespuestaServicios(resp));
         break;
       case '7':
         this.reporServ
           .getProyectosInvestigadoresIndependientes(this.filtros)
-          .subscribe((resp) => this.manejarRespuestaServicios(resp))
+          .subscribe((resp) => this.manejarRespuestaServicios(resp));
         break;
       case '8':
         this.showFacultades = true;
         this.reporServ
           .getProyectosPorFacultad(this.facultadConsulta, this.filtros)
-          .subscribe((resp) => this.manejarRespuestaServicios(resp))
+          .subscribe((resp) => this.manejarRespuestaServicios(resp));
         break;
       case '9':
         this.showProgramas = true;
         this.reporServ
           .getProyectosPorPrograma(this.programaConsulta, this.filtros)
-          .subscribe((resp) => this.manejarRespuestaServicios(resp))
+          .subscribe((resp) => this.manejarRespuestaServicios(resp));
         break;
     }
   }
 
   manejarRespuestaServicios(data: Reportes) {
     if (data.success) {
-      this.dataReportes = data.data
-      this.alServ.abrirAlerta(data.mensaje, 'success')
-      this.showTable = true
-      setTimeout(() => window.open(`${FILES_URL}/${data.ruta}`, '_blank'), 1000)
+      if (data.data.length > 0) {
+        this.dataReportes = data.data;
+        this.alServ.abrirAlerta(data.mensaje, 'success');
+        this.showTable = true;
+        setTimeout(
+          () => window.open(`${FILES_URL}/${data.ruta}`, '_blank'),
+          1000
+        );
+      } else {
+        this.alServ.abrirAlerta(
+          'Error, no hay resultados para este reporte',
+          'warning'
+        );
+      }
     } else {
-      this.alServ.abrirAlerta(data.mensaje, 'warning')
+      this.alServ.abrirAlerta(data.mensaje, 'warning');
     }
-    this.onRequest = false
+    this.onRequest = false;
   }
 }
