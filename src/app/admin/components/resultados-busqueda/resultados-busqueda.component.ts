@@ -6,39 +6,37 @@ import { PaginationInstance } from 'ngx-pagination';
 @Component({
   selector: 'app-resultados-busqueda',
   templateUrl: './resultados-busqueda.component.html',
-  styleUrls: ['./resultados-busqueda.component.scss']
+  styleUrls: ['./resultados-busqueda.component.scss'],
 })
 export class ResultadosBusquedaComponent implements OnInit {
-  @Input() titulo: string = ''
-  @Input() tituloResultados: string = ''
-  @Input() filtros: any
+  @Input() titulo: string = '';
+  @Input() tituloResultados: string = '';
+  @Input() filtros: any;
 
   onRequest: boolean = false;
-  showTable: boolean = false
+  showTable: boolean = false;
   reporte: string = '';
-  resultadosBusqueda: Proyecto[] = []
+  resultadosBusqueda: Proyecto[] = [];
 
-  constructor(
-    private buscProServ: BuscadorProyectosService
-  ) { }
+  constructor(private buscProServ: BuscadorProyectosService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   sendRequest() {
     this.onRequest = true;
-    this.showTable = false
-    this.buscProServ.getProyectosBuscador(this.filtros).subscribe(resp => {
-      this.resultadosBusqueda = resp.proyectos
-      this.onRequest = false
-      this.showTable = true
-    })
+    this.showTable = false;
+    this.buscProServ.getProyectosBuscador(this.filtros).subscribe((resp) => {
+      this.resultadosBusqueda = resp.proyectos;
+      this.onRequest = false;
+      this.showTable = true;
+    });
   }
 
   getFiltros(e: any) {
-    this.filtros = e
+    console.log(e);
+    this.filtros = e;
   }
 
   paginaFiltros(e: any) {
-    this.filtros.page = e
+    this.filtros.page = e;
   }
 }
