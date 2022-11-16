@@ -2,28 +2,74 @@
 
 <app-filters></app-filters>
 
-<div class="contenedor-max-app">
-    <div class="contenedor-tarjetas">
-        <div class="subcontenedor-tarjetas">
-            <app-cards colorFondo="tarjeta-naranja" tituloTarjeta="Proy. terminados año / creados" valorTarjeta="12/123"></app-cards>
-            <app-cards colorFondo="tarjeta-azul-oscura" tituloTarjeta="Proy. terminados año / creados" valorTarjeta="12/123"></app-cards>
-            <app-cards colorFondo="tarjeta-azul-clara" tituloTarjeta="Proy. terminados año / creados" valorTarjeta="12/123"></app-cards>
-            <app-cards colorFondo="tarjeta-naranja" tituloTarjeta="Proy. terminados año / creados" valorTarjeta="12/123"></app-cards>
-        </div>
-
-        <div class="ancho-completo fondo-blanco">
-            <canvas baseChart width="400" height="250" [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-        </div>
-
-        <div class="subcontenedor-tarjetas">
-            <app-cards colorFondo="tarjeta-naranja" tituloTarjeta="Proy. terminados año / creados" valorTarjeta="12/123"></app-cards>
-            <app-cards colorFondo="tarjeta-azul-oscura" tituloTarjeta="Proy. terminados año / creados" valorTarjeta="12/123"></app-cards>
-            <app-cards colorFondo="tarjeta-azul-clara" tituloTarjeta="Proy. terminados año / creados" valorTarjeta="12/123"></app-cards>
-            <app-cards colorFondo="tarjeta-naranja" tituloTarjeta="Proy. terminados año / creados" valorTarjeta="12/123"></app-cards>
-        </div>
+<div class="contenedor-max-app" *ngIf="dataLoad">
+  <div class="contenedor-tarjetas">
+    <div class="subcontenedor-tarjetas">
+      <app-cards
+        colorFondo="tarjeta-naranja"
+        tituloTarjeta="Proy. terminados año / creados"
+        valorTarjeta="{{ elemsDash.finalizados }} / {{ elemsDash.creados }}"
+      ></app-cards>
+      <app-cards
+        colorFondo="tarjeta-azul-oscura"
+        tituloTarjeta="Proy. aula"
+        valorTarjeta="{{ elemsDash.aula }}"
+      ></app-cards>
+      <app-cards
+        colorFondo="tarjeta-azul-clara"
+        tituloTarjeta="Proy. grado"
+        valorTarjeta="{{ elemsDash.grado }}"
+      ></app-cards>
+      <app-cards
+        colorFondo="tarjeta-naranja"
+        tituloTarjeta="Proy. semillero"
+        valorTarjeta="{{ elemsDash.semillero }}"
+      ></app-cards>
     </div>
-    <div class="contenedor-tabla ">
-        <h3 class="color-blanco mb-3 mt-3">Ranking proyectos creados por facultad</h3>
-        <app-tabla-ranking class="mb-3"></app-tabla-ranking>
+
+    <div class="ancho-completo fondo-blanco">
+      <canvas
+        baseChart
+        width="400"
+        height="250"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="lineChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
     </div>
+
+    <div class="subcontenedor-tarjetas">
+      <app-cards
+        colorFondo="tarjeta-naranja"
+        tituloTarjeta="Proy. convocatoria"
+        valorTarjeta="{{ elemsDash.convocatorias }}"
+      ></app-cards>
+      <app-cards
+        colorFondo="tarjeta-azul-oscura"
+        tituloTarjeta="Proy. Investigadores Ind."
+        valorTarjeta="{{ elemsDash.inv_independientes }}"
+      ></app-cards>
+      <app-cards
+        colorFondo="tarjeta-azul-clara"
+        tituloTarjeta="Presupuesto a proyectos"
+        valorTarjeta="{{ elemsDash.presupuesto }}"
+      ></app-cards>
+      <app-cards
+        colorFondo="tarjeta-naranja"
+        tituloTarjeta="Conocimiento tacito / implicito"
+        valorTarjeta="12/123"
+      ></app-cards>
+    </div>
+  </div>
+  <div class="contenedor-tabla">
+    <h3 class="color-blanco mb-3 mt-3">
+      Ranking proyectos creados por facultad
+    </h3>
+    <app-tabla-ranking
+      [datosRanking]="elemsDash.ranking"
+      class="mb-3"
+    ></app-tabla-ranking>
+  </div>
 </div>

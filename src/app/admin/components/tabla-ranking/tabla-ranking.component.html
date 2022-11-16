@@ -1,42 +1,18 @@
-<table class="fondo-blanco mt-3 mb-3 ancho-completo table table-hover table-bordered table-striped no-padding">
-    <thead>
-        <tr>
-            <th>col</th>
-            <th>col</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>x</td>
-            <td>y</td>
-        </tr>
-        <tr>
-            <td>x</td>
-            <td>y</td>
-        </tr>
-        <tr>
-            <td>x</td>
-            <td>y</td>
-        </tr>
-        <tr>
-            <td>x</td>
-            <td>y</td>
-        </tr>
-        <tr>
-            <td>x</td>
-            <td>y</td>
-        </tr>
-        <tr>
-            <td>x</td>
-            <td>y</td>
-        </tr>
-        <tr>
-            <td>x</td>
-            <td>y</td>
-        </tr>
-        <tr>
-            <td>x</td>
-            <td>y</td>
-        </tr>
-    </tbody>
+<table
+  class="fondo-blanco mt-3 mb-3 ancho-completo table table-hover table-bordered table-striped no-padding"
+>
+  <thead>
+    <tr>
+      <th>Facultad</th>
+      <th>Cantidad Proyectos</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rank of datosRanking | keyvalue: returnZero">
+      <td>{{ rank.key | uppercase }}</td>
+      <td>{{ rank.value }}</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
