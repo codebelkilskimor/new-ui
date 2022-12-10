@@ -124,23 +124,16 @@ export class HomeComponent implements OnInit {
   }
 
   manejarRespuestaServicios(data: Reportes) {
-    if (data.success) {
-      if (data.data.length > 0) {
-        this.dataReportes = data.data;
-        this.alServ.abrirAlerta(data.mensaje, 'success');
-        this.showTable = true;
-        setTimeout(
-          () => window.open(`${FILES_URL}/${data.ruta}`, '_blank'),
-          1000
-        );
-      } else {
-        this.alServ.abrirAlerta(
-          'Error, no hay resultados para este reporte',
-          'warning'
-        );
-      }
+    if (data.data.length > 0) {
+      this.dataReportes = data.data;
+      this.alServ.abrirAlerta(data.mensaje, 'success');
+      this.showTable = true;
+      setTimeout(
+        () => window.open(`${FILES_URL}/${data.ruta}`, '_blank'),
+        1000
+      );
     } else {
-      this.alServ.abrirAlerta(data.mensaje, 'warning');
+      this.alServ.abrirAlerta('No hay resultados para este reporte', 'warning');
     }
     this.onRequest = false;
   }
