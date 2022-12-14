@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BuscadorProyectosService } from '../../services/buscador-proyectos.service';
 import { Proyecto } from '../../interfaces/proyecto';
 import { PaginationInstance } from 'ngx-pagination';
+import { InvestigadoresService } from '../../services/investigadores.service';
+import { Usuario } from '../../interfaces/investigadores';
 
 @Component({
   selector: 'app-resultados-busqueda',
@@ -11,15 +13,19 @@ import { PaginationInstance } from 'ngx-pagination';
 export class ResultadosBusquedaComponent implements OnInit {
   @Input() titulo: string = ''
   @Input() tituloResultados: string = ''
+  @Input() busResultados: string = ''
   @Input() filtros: any
+  @Input() api: string  = ''
 
   onRequest: boolean = false;
   showTable: boolean = false
   reporte: string = '';
-  resultadosBusqueda: Proyecto[] = []
+  resultadosBusquedaProjects: Proyecto[] = []
+  resultadosBusquedaUsers: Usuario[] = []
 
   constructor(
-    private buscProServ: BuscadorProyectosService
+    private buscProServ: BuscadorProyectosService,
+    private buscInvServ: InvestigadoresService
   ) { }
 
   ngOnInit(): void {
@@ -27,8 +33,24 @@ export class ResultadosBusquedaComponent implements OnInit {
   sendRequest() {
     this.onRequest = true;
     this.showTable = false
+    if (this.api === 'inv') {
+      this.sendRequestInv()
+    } else {
+      this.sendRequestPro()
+    }
+  }
+
+  sendRequestPro(): void {
     this.buscProServ.getProyectosBuscador(this.filtros).subscribe(resp => {
-      this.resultadosBusqueda = resp.proyectos
+      this.resultadosBusquedaProjects = resp.proyectos
+      this.onRequest = false
+      this.showTable = true
+    })
+  }
+
+  sendRequestInv(): void {
+    this.buscInvServ.getInvestigadores(this.filtros).subscribe(resp => {
+      this.resultadosBusquedaUsers = resp.usuarios;
       this.onRequest = false
       this.showTable = true
     })
