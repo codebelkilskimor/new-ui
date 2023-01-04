@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InvestigadoresService } from '../../services/investigadores.service';
 
 @Component({
   selector: 'app-searcher-b',
@@ -9,9 +10,10 @@ export class SearcherBComponent implements OnInit {
 
   onRequest: boolean = false;
   showTable: boolean = false
+  filtros: any = {}
   reporte: string = '';
-  constructor() { }
-
+  constructor(private api: InvestigadoresService ) { }
+  
   ngOnInit(): void {
   }
   sendRequest() {
@@ -22,8 +24,12 @@ export class SearcherBComponent implements OnInit {
       this.showTable = true
     }, 1000);
   }
- 
+  getFiltros(e: any) {
+    this.filtros = e
+  }
 
-  
+  getInvestigadores() {
+   
+  }
 
 }

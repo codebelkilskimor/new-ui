@@ -22,6 +22,8 @@ import { ResultadosBusquedaComponent } from './components/resultados-busqueda/re
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NoResultadosComponent } from './components/no-resultados/no-resultados.component';
 import { DialogDetalleProyectoComponent } from './dialogs/dialog-detalle-proyecto/dialog-detalle-proyecto.component';
+import { TablaInvestigadoresComponent } from './components/tabla-investigadores/tabla-investigadores.component';
+import { DialogDetalleInvestigadorComponent } from './dialogs/dialog-detalle-investigador/dialog-detalle-investigador.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { DialogDetalleProyectoComponent } from './dialogs/dialog-detalle-proyect
     PaginationComponent,
     NoResultadosComponent,
     DialogDetalleProyectoComponent,
+    TablaInvestigadoresComponent,
+    DialogDetalleInvestigadorComponent
   ],
   imports: [
     CommonModule,

@@ -2,48 +2,12 @@
   PROYECTO: {{ proyecto.titulo | uppercase }}
 </h1>
 <div mat-dialog-content>
-  <h3 class="subtitulo-resultados">Descripción:</h3>
-  <span class="texto-resultado">{{ proyecto.descripcion }}</span>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Estado:</h3>
-    <p class="texto-resultado">{{ proyecto.estado }}</p>
-  </div>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Facultad:</h3>
-    <p class="texto-resultado">{{ proyecto.nombre_facultad }}</p>
-  </div>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Programa:</h3>
-    <p class="texto-resultado">{{ proyecto.nombre_programa }}</p>
-  </div>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Estado:</h3>
-    <p class="texto-resultado">{{ proyecto.estado }}</p>
-  </div>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Metodología:</h3>
-    <p class="texto-resultado">{{ proyecto.metodologia }}</p>
-  </div>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Justificación:</h3>
-    <p class="texto-resultado">{{ proyecto.justificacion }}</p>
-  </div>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Participantes:</h3>
-    <div class="texto-resultado">
-      <div *ngFor="let participantes of proyecto.participantes">
-        {{ participantes.nombres }} {{ participantes.apellidos }}
-      </div>
-    </div>
-  </div>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Presupuesto:</h3>
-    <div class="texto-resultado">
-      <div *ngFor="let presupuestos of proyecto.presupuestos">
-        {{ presupuestos.monto | currency: "COP ":true }} ({{
-          presupuestos.fecha | date: "yyyy/MM/dd"
-        }})
-      </div>
+    <h3 class="subtitulo-resultados">Descripción:</h3>
+    <span class="texto-resultado">{{ proyecto.descripcion }}</span>
+
+    <div class="subcontenedor-resultados-tarjeta">
+        <h3 class="subtitulo-resultados">Facultad:</h3>
+        <p class="texto-resultado">{{ proyecto.nombre_facultad }}</p>
     </div>
   </div>
   <div class="subcontenedor-resultados-tarjeta">
