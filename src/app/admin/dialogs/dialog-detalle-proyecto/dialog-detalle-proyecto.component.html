@@ -2,32 +2,31 @@
   PROYECTO: {{ proyecto.titulo | uppercase }}
 </h1>
 <div mat-dialog-content>
-    <h3 class="subtitulo-resultados">Descripción:</h3>
-    <span class="texto-resultado">{{ proyecto.descripcion }}</span>
+  <h3 class="subtitulo-resultados">Descripción:</h3>
+  <span class="texto-resultado">{{ proyecto.descripcion }}</span>
 
-    <div class="subcontenedor-resultados-tarjeta">
-        <h3 class="subtitulo-resultados">Facultad:</h3>
-        <p class="texto-resultado">{{ proyecto.nombre_facultad }}</p>
+  <div class="subcontenedor-resultados-tarjeta">
+    <h3 class="subtitulo-resultados">Facultad:</h3>
+    <p class="texto-resultado">{{ proyecto.nombre_facultad }}</p>
+  </div>
+</div>
+<div class="subcontenedor-resultados-tarjeta">
+  <h3 class="subtitulo-resultados">Areas de conocimiento:</h3>
+  <div class="texto-resultado">
+    <div *ngFor="let areas of proyecto.area_conocimientos">
+      {{ areas.nombre }}
     </div>
   </div>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Areas de conocimiento:</h3>
-    <div class="texto-resultado">
-      <div *ngFor="let areas of proyecto.area_conocimientos">
-        {{ areas.nombre }}
-      </div>
-    </div>
-  </div>
-  <div class="subcontenedor-resultados-tarjeta">
-    <h3 class="subtitulo-resultados">Resultados:</h3>
-    <div class="texto-resultado">
-      <a
-        *ngFor="let productos of proyecto.productos"
-        [href]="productos.url_repo"
-        target="_blank"
-        >{{ productos.titulo_producto }}</a
-      >
-    </div>
+</div>
+<div class="subcontenedor-resultados-tarjeta">
+  <h3 class="subtitulo-resultados">Resultados:</h3>
+  <div class="texto-resultado">
+    <a
+      *ngFor="let productos of proyecto.productos"
+      [href]="productos.url_repo"
+      target="_blank"
+      >{{ productos.titulo_producto }}</a
+    >
   </div>
 </div>
 <div mat-dialog-actions align="end">
