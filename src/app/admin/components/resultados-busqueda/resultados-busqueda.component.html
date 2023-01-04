@@ -5,8 +5,7 @@
       <div class="ancho-completo">
         <mat-form-field
           appearance="fill"
-          class="ancho-completo no-padding color-negro"
-        >
+          class="ancho-completo no-padding color-negro">
           <mat-label>{{ tituloResultados }}</mat-label>
           <input matInput />
         </mat-form-field>
@@ -23,11 +22,18 @@
         *ngIf="onRequest"
         [element]="'Reporte de datos'"
       ></app-loader>
-      <div *ngIf="showTable">
-        <div class="barra-resultados">RESULTADOS:</div>
+      <div *ngIf="showTable && api === 'prj'">
+        <div class="barra-resultados">RESULTADOS PROYECTOS:</div>
         <app-tabla-proyecto
-          [resultados]="resultadosBusqueda"
+          [resultados]="resultadosBusquedaProjects"
         ></app-tabla-proyecto>
+      </div>
+      <div *ngIf="showTable && api === 'inv'">
+        <div class="barra-resultados">RESULTADOS INVESTIGADORES:</div>
+        <app-tabla-investigadores
+          [resultados]="resultadosBusquedaUsers">
+        </app-tabla-investigadores>
+         <!-- resultadosBusquedaUsers -->
       </div>
     </div>
   </div>

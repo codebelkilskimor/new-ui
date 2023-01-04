@@ -1,3 +1,9 @@
 <app-navbar-search></app-navbar-search>
 <app-filters (filtros)="getFiltros($event)"></app-filters>
-<app-resultados-busqueda [filtros]="filtros" titulo="Buscador de Proyectos" tituloResultados="Nombre del proyecto:"></app-resultados-busqueda>
+<app-resultados-busqueda
+     [filtros]="filtros" 
+     api="prj"
+     titulo="Buscador de Proyectos" 
+     tituloResultados="Nombre del proyecto:" 
+     busResultados="proyectos" >
+</app-resultados-busqueda>
