@@ -1,6 +1,6 @@
 <a
   class="resultados-buscador-tarjeta"
-  *ngFor="let res of resultados | paginate: config"
+  *ngFor="let res of resultados | paginate : config"
   (click)="abrirModal(res.id)"
 >
   <div class="contenedor-flex-tarjeta-buscador">
@@ -11,7 +11,7 @@
       {{ res.descripcion }}
     </div>
     <h3 class="subtitulo-resultados">Integrantes</h3>
-    <div class="texto-resultado">
+    <div class="texto-resultado contenedor-resultados-participaciones">
       <div *ngFor="let participantes of res.participantes; let i = index">
         {{ participantes.nombres }} {{ participantes.apellidos }}
       </div>

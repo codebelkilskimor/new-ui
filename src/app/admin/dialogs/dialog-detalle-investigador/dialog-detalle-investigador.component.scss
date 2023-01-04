@@ -1,8 +1,14 @@
 .listado-detalle-proyecto li {
-    margin-bottom: 0;
-    padding-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.contenedor-proyectos-lista {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .texto-resultado div {
-    width: 33%;
+  width: 31%;
 }

@@ -11,11 +11,11 @@ import { InvestigadoresService } from '../../services/investigadores.service';
 @Component({
   selector: 'app-tabla-investigadores',
   templateUrl: './tabla-investigadores.component.html',
-  styleUrls: ['./tabla-investigadores.component.scss']
+  styleUrls: ['./tabla-investigadores.component.scss'],
 })
 export class TablaInvestigadoresComponent implements OnInit {
-  @Input() resultados: Usuario[] = []
-  @Output() retornoPagina: EventEmitter<number> = new EventEmitter
+  @Input() resultados: Usuario[] = [];
+  @Output() retornoPagina: EventEmitter<number> = new EventEmitter();
   public directionLinks: boolean = true;
   public autoHide: boolean = false;
   public responsive: boolean = false;
@@ -35,15 +35,14 @@ export class TablaInvestigadoresComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private buscadorServ: InvestigadoresService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.config.totalItems = this.resultados.length
-
+    this.config.totalItems = this.resultados.length;
   }
 
   regresarPagina(e: number) {
-    this.config.currentPage = e
+    this.config.currentPage = e;
   }
 
   excepcionPaginacion(e: any) {
@@ -52,19 +51,20 @@ export class TablaInvestigadoresComponent implements OnInit {
 
   buscarInvestigadorId(id: string) {
     return new Promise((resolve) => {
-      this.buscadorServ.getInvestigadores(id).subscribe(resp => {
-        if (resp.success) resolve(resp.usuarios)
-      })
-    })
+      this.buscadorServ.getInvestigador(id).subscribe((resp) => {
+        if (resp.success) resolve(resp.usuario);
+      });
+    });
   }
 
   async abrirModal(cedula: string) {
+    console.log(cedula);
     this.dialog.open(DialogDetalleInvestigadorComponent, {
       data: {
-        investigador: await this.buscarInvestigadorId(cedula)
+        investigador: await this.buscarInvestigadorId(cedula),
       },
       maxWidth: '600px',
-      width: '90%'
+      width: '90%',
     });
   }
 }

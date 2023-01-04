@@ -1,31 +1,33 @@
 <h1 class="subtitulo-resultados" mat-dialog-title>DETALLE INVESTIGADOR:</h1>
 <div mat-dialog-content>
-    <div class="subcontenedor-resultados-tarjeta">
-        <h3 class="subtitulo-resultados">Nombre:</h3>
-        <p class="texto-resultado">{{ investigador.nombres | uppercase }}</p>
+  <div class="subcontenedor-resultados-tarjeta">
+    <h3 class="subtitulo-resultados">Nombre:</h3>
+    <p class="texto-resultado">{{ investigador.nombres | uppercase }}</p>
+  </div>
+  <div class="subcontenedor-resultados-tarjeta">
+    <h3 class="subtitulo-resultados">Apellido:</h3>
+    <p class="texto-resultado">{{ investigador.apellidos | uppercase }}</p>
+  </div>
+  <div class="subcontenedor-resultados-tarjeta">
+    <h3 class="subtitulo-resultados">Proyectos en los que participó:</h3>
+    <div class="texto-resultado contenedor-proyectos-lista">
+      <div *ngFor="let proyectos of investigador.participaciones">
+        <b>Nombre:</b> {{ proyectos.titulo }}<br />
+        <b>Estado:</b> {{ proyectos.estado }}<br />
+        <b>Programas asociados:</b>
+        <ul class="listado-detalle-proyecto">
+          <li *ngFor="let programas of proyectos.programas">{{ programas }}</li>
+        </ul>
+        <b>Facultades asociadas:</b>
+        <ul class="listado-detalle-proyecto">
+          <li *ngFor="let facultades of proyectos.facultades">
+            {{ facultades }}
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="subcontenedor-resultados-tarjeta">
-        <h3 class="subtitulo-resultados">Apellido:</h3>
-        <p class="texto-resultado">{{ investigador.apellidos | uppercase }}</p>
-    </div>
-    <div class="subcontenedor-resultados-tarjeta">
-        <h3 class="subtitulo-resultados">Proyectos en los que participó:</h3>
-        <div class="texto-resultado">
-            <div *ngFor="let proyectos of investigador.participaciones">
-                <b>Nombre:</b> {{ proyectos.titulo }}<br>
-                <b>Estado:</b> {{ proyectos.estado }}<br>
-                <b>Programas asociados:</b>
-                <ul class = "listado-detalle-proyecto">
-                    <li *ngFor="let programas of proyectos.programas">{{ programas }}</li>
-                </ul>
-                <b>Facultades asociadas:</b>
-                <ul class = "listado-detalle-proyecto">
-                    <li *ngFor="let facultades of proyectos.facultades">{{ facultades }}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 <div mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cerrar</button>
+  <button mat-button mat-dialog-close>Cerrar</button>
 </div>

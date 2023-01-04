@@ -1,47 +1,51 @@
-<a class="resultados-buscador-tarjeta" *ngFor="let res of resultados | paginate: config" (click)="abrirModal(res.cedula)">
-    <div class="contenedor-flex-tarjeta-buscador">
-        <h3 class="titulo-resultado">
-            {{ res.nombres | uppercase }}
-        </h3>
-        <div class="descripcion-resultado">
-            {{ res.apellidos }}
-        </div>
-        <h3 class="subtitulo-resultados">
-            Partipaciones
-        </h3>
-        <div class="texto-resultado">
-            <div *ngFor="let par of res.participaciones; let i = index">{{ par.titulo }}</div>
-        </div>
+<a
+  class="resultados-buscador-tarjeta"
+  *ngFor="let res of resultados | paginate : config"
+  (click)="abrirModal(res.cedula)"
+>
+  <div class="contenedor-flex-tarjeta-buscador">
+    <h3 class="titulo-resultado">
+      {{ res.nombres | uppercase }}
+    </h3>
+    <div class="descripcion-resultado">
+      {{ res.apellidos }}
     </div>
-    <div class="contenedor-flex-tarjeta-buscador">
-        <div class="subcontenedor-resultados-tarjeta">
-            <h3 class="subtitulo-resultados">
-                Programa:
-            </h3>
-            <span class="texto-resultado">
-                {{ res.participaciones[0].clases[0].materium.programa.nombre }}
-            </span>
-        </div>
-        <div class="subcontenedor-resultados-tarjeta">
-            <h3 class="subtitulo-resultados">
-                Facultad:
-            </h3>
-            <span class="texto-resultado">
-                {{ res.participaciones[0].clases[0].materium.programa.facultad.nombre }}
-            </span>
-        </div>
+    <h3 class="subtitulo-resultados">Partipaciones</h3>
+    <div class="texto-resultado contenedor-resultados-participaciones">
+      <div *ngFor="let par of res.participaciones; let i = index">
+        {{ par.titulo }}
+      </div>
     </div>
+  </div>
+  <div class="contenedor-flex-tarjeta-buscador">
+    <div class="subcontenedor-resultados-tarjeta">
+      <h3 class="subtitulo-resultados">Programa:</h3>
+      <span class="texto-resultado">
+        {{ res.participaciones[0].clases[0].materium.programa.nombre }}
+      </span>
+    </div>
+    <div class="subcontenedor-resultados-tarjeta">
+      <h3 class="subtitulo-resultados">Facultad:</h3>
+      <span class="texto-resultado">
+        {{ res.participaciones[0].clases[0].materium.programa.facultad.nombre }}
+      </span>
+    </div>
+  </div>
 </a>
 <div class="d-flex justify-content-center">
-    <pagination-controls id="paginacion" 
-    [directionLinks]="directionLinks" 
-    [autoHide]="autoHide" 
-    [responsive]="responsive" 
-    [previousLabel]="labels.previousLabel" 
-    [nextLabel]="labels.nextLabel" 
+  <pagination-controls
+    id="paginacion"
+    [directionLinks]="directionLinks"
+    [autoHide]="autoHide"
+    [responsive]="responsive"
+    [previousLabel]="labels.previousLabel"
+    [nextLabel]="labels.nextLabel"
     [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
-    [screenReaderPageLabel]="labels.screenReaderPageLabel" 
-    [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="regresarPagina($event)" (pageBoundsCorrection)="excepcionPaginacion($event)">
-    </pagination-controls>
+    [screenReaderPageLabel]="labels.screenReaderPageLabel"
+    [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+    (pageChange)="regresarPagina($event)"
+    (pageBoundsCorrection)="excepcionPaginacion($event)"
+  >
+  </pagination-controls>
 </div>
-<br>
+<br />

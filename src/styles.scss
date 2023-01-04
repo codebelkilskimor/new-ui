@@ -210,3 +210,13 @@ button {
 .subcontenedor-resultados-tarjeta {
   margin-bottom: 10px;
 }
+
+.contenedor-resultados-participaciones {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contenedor-resultados-participaciones div {
+  width: auto;
+}

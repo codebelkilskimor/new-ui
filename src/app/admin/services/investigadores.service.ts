@@ -4,23 +4,24 @@ import { HttpClient } from '@angular/common/http';
 import { Respuestainvestigadores } from '../interfaces/investigadores';
 import { Respuestauninvestigador } from '../interfaces/investigador';
 
-export const API_URL = environment.apiUrl
+export const API_URL = environment.apiUrl;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class InvestigadoresService {
-
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   getInvestigadores(data: any) {
-    return this.http.post<Respuestainvestigadores>(`${API_URL}/investigadores`, data)
+    return this.http.post<Respuestainvestigadores>(
+      `${API_URL}/investigadores`,
+      data
+    );
   }
 
-  getInvestigador(id: number) {
-    return this.http.get<Respuestauninvestigador>(`${API_URL}/investigadores/${id}`)
+  getInvestigador(id: string) {
+    return this.http.get<Respuestauninvestigador>(
+      `${API_URL}/investigadores/${id}`
+    );
   }
 }
