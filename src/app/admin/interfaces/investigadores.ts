@@ -27,6 +27,8 @@ export interface proyecto {
     justificacion:           string;
     tipo_proyecto:           string;
     clases:                  Clase[];
+    facultades:              any;
+    programas:               any;
 }
 
 export interface Clase {

@@ -1,16 +1,16 @@
 <a class="resultados-buscador-tarjeta" *ngFor="let res of resultados | paginate: config" (click)="abrirModal(res.cedula)">
     <div class="contenedor-flex-tarjeta-buscador">
         <h3 class="titulo-resultado">
-            {{ res.nombres| uppercase }}
+            {{ res.nombres | uppercase }}
         </h3>
         <div class="descripcion-resultado">
             {{ res.apellidos }}
         </div>
         <h3 class="subtitulo-resultados">
-            Integrantes
+            Partipaciones
         </h3>
         <div class="texto-resultado">
-            <div *ngFor="let participantes of res.participaciones; let i = index">{{ participantes.descripcion }} {{ participantes.tipo_proyecto }}</div>
+            <div *ngFor="let par of res.participaciones; let i = index">{{ par.titulo }}</div>
         </div>
     </div>
     <div class="contenedor-flex-tarjeta-buscador">
@@ -19,7 +19,7 @@
                 Programa:
             </h3>
             <span class="texto-resultado">
-                
+                {{ res.participaciones[0].clases[0].materium.programa.nombre }}
             </span>
         </div>
         <div class="subcontenedor-resultados-tarjeta">
@@ -27,13 +27,21 @@
                 Facultad:
             </h3>
             <span class="texto-resultado">
-               
+                {{ res.participaciones[0].clases[0].materium.programa.facultad.nombre }}
             </span>
         </div>
     </div>
 </a>
 <div class="d-flex justify-content-center">
-    <pagination-controls id="paginacion" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
-        [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="regresarPagina($event)" (pageBoundsCorrection)="excepcionPaginacion($event)"></pagination-controls>
+    <pagination-controls id="paginacion" 
+    [directionLinks]="directionLinks" 
+    [autoHide]="autoHide" 
+    [responsive]="responsive" 
+    [previousLabel]="labels.previousLabel" 
+    [nextLabel]="labels.nextLabel" 
+    [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+    [screenReaderPageLabel]="labels.screenReaderPageLabel" 
+    [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="regresarPagina($event)" (pageBoundsCorrection)="excepcionPaginacion($event)">
+    </pagination-controls>
 </div>
 <br>

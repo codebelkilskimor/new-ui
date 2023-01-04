@@ -28,8 +28,7 @@ export class ResultadosBusquedaComponent implements OnInit {
     private buscInvServ: InvestigadoresService
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
   sendRequest() {
     this.onRequest = true;
     this.showTable = false

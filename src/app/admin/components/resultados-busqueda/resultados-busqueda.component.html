@@ -23,13 +23,13 @@
         [element]="'Reporte de datos'"
       ></app-loader>
       <div *ngIf="showTable && api === 'prj'">
-        <div class="barra-resultados">RESULTADOS:</div>
+        <div class="barra-resultados">RESULTADOS PROYECTOS:</div>
         <app-tabla-proyecto
           [resultados]="resultadosBusquedaProjects"
         ></app-tabla-proyecto>
       </div>
       <div *ngIf="showTable && api === 'inv'">
-        <div class="barra-resultados">RESULTADOS investigador:</div>
+        <div class="barra-resultados">RESULTADOS INVESTIGADORES:</div>
         <app-tabla-investigadores
           [resultados]="resultadosBusquedaUsers">
         </app-tabla-investigadores>

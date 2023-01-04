@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PaginationInstance } from 'ngx-pagination';
 import { StringMappingType } from 'typescript';
+import { DialogDetalleInvestigadorComponent } from '../../dialogs/dialog-detalle-investigador/dialog-detalle-investigador.component';
 import { DialogDetalleProyectoComponent } from '../../dialogs/dialog-detalle-proyecto/dialog-detalle-proyecto.component';
 import { Usuario } from '../../interfaces/investigadores';
 import { Proyectos } from '../../interfaces/proyectoIndividual';
@@ -49,7 +50,7 @@ export class TablaInvestigadoresComponent implements OnInit {
     console.error(`Página ${e} no existe.`);
   }
 
-  buscarProyectoId(id: string) {
+  buscarInvestigadorId(id: string) {
     return new Promise((resolve) => {
       this.buscadorServ.getInvestigadores(id).subscribe(resp => {
         if (resp.success) resolve(resp.usuarios)
@@ -57,10 +58,10 @@ export class TablaInvestigadoresComponent implements OnInit {
     })
   }
 
-  async abrirModal(id: string) {
-    this.dialog.open(DialogDetalleProyectoComponent, {
+  async abrirModal(cedula: string) {
+    this.dialog.open(DialogDetalleInvestigadorComponent, {
       data: {
-        proyecto: await this.buscarProyectoId(id)
+        investigador: await this.buscarInvestigadorId(cedula)
       },
       maxWidth: '600px',
       width: '90%'
