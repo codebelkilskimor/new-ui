@@ -27,17 +27,31 @@
       ></app-cards>
     </div>
 
+    <div class="ancho-completo fondo-blanco margen-baja">
+      <mat-form-field appearance="fill" class="ancho-completo no-padding">
+        <mat-label>Seleccione la gráfica a consultar</mat-label>
+        <mat-select [(ngModel)]="tipoGrafica">
+          <mat-option value="0">Proyectos en proceso/terminados</mat-option>
+          <mat-option value="1">Presupuesto proyectos por mes</mat-option>
+          <mat-option value="2"
+            >Cantidad Proyectos de grado y semillero por facultad</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
     <div class="ancho-completo fondo-blanco">
-      <canvas
-        baseChart
-        width="400"
-        height="250"
-        [data]="lineChartData"
-        [options]="lineChartOptions"
-        [type]="lineChartType"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"
-      ></canvas>
+      <ng-container [ngSwitch]="tipoGrafica">
+        <app-proyectos-proceso-terminados
+          *ngSwitchCase="0"
+        ></app-proyectos-proceso-terminados>
+        <app-presupuesto-proyectos-por-mes
+          *ngSwitchCase="1"
+        ></app-presupuesto-proyectos-por-mes>
+        <app-proyectos-semillero-grado
+          *ngSwitchCase="2"
+        ></app-proyectos-semillero-grado>
+      </ng-container>
     </div>
 
     <div class="subcontenedor-tarjetas">

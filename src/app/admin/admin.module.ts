@@ -24,6 +24,9 @@ import { NoResultadosComponent } from './components/no-resultados/no-resultados.
 import { DialogDetalleProyectoComponent } from './dialogs/dialog-detalle-proyecto/dialog-detalle-proyecto.component';
 import { TablaInvestigadoresComponent } from './components/tabla-investigadores/tabla-investigadores.component';
 import { DialogDetalleInvestigadorComponent } from './dialogs/dialog-detalle-investigador/dialog-detalle-investigador.component';
+import { ProyectosProcesoTerminadosComponent } from './components/graficos/proyectos-proceso-terminados/proyectos-proceso-terminados.component';
+import { PresupuestoProyectosPorMesComponent } from './components/graficos/presupuesto-proyectos-por-mes/presupuesto-proyectos-por-mes.component';
+import { ProyectosSemilleroGradoComponent } from './components/graficos/proyectos-semillero-grado/proyectos-semillero-grado.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { DialogDetalleInvestigadorComponent } from './dialogs/dialog-detalle-inv
     NoResultadosComponent,
     DialogDetalleProyectoComponent,
     TablaInvestigadoresComponent,
-    DialogDetalleInvestigadorComponent
+    DialogDetalleInvestigadorComponent,
+    ProyectosProcesoTerminadosComponent,
+    PresupuestoProyectosPorMesComponent,
+    ProyectosSemilleroGradoComponent
   ],
   imports: [
     CommonModule,
