@@ -1,44 +1,73 @@
 <div class="contenedor-full-flex-app">
-    <div class="contenedor-min-app">
-        <div class="subcontenedor-min-app">
-            <div class="logo">
-                <img src="/assets/img/logo.png" alt="Universidad San Buenaventura" />
-            </div>
-            <h1 class="titulo-usb">
-                KNOWLEDGE USB - MAPA DE CONOCIMIENTO<br />UNIVERSIDAD SAN BUENAVENTURA
-            </h1>
-            <form [formGroup]="loginForm" (ngSubmit)="showModal()">
-                <mat-form-field class="max-width" appearance="outline">
-                    <mat-label>Correo Electronico</mat-label>
-                    <input matInput [disabled]="onRequest" autocomplete="disabled" formControlName="correo_est" placeholder="Ingrese su correo electronico" />
-                    <mat-icon matSuffix>person</mat-icon>
-                    <mat-error *ngIf="loginForm.get('correo_est')?.hasError('required')">
-                        Este campo es requerido
-                    </mat-error>
-                    <mat-error *ngIf="loginForm.get('correo_est')?.hasError('email')">
-                        Ingrese un email valido
-                    </mat-error>
-                </mat-form-field>
+  <div class="contenedor-min-app">
+    <div class="subcontenedor-min-app">
+      <div class="logo">
+        <img src="/assets/img/logo.png" alt="Universidad San Buenaventura" />
+      </div>
+      <h1 class="titulo-usb">
+        KNOWLEDGE USB - MAPA DE CONOCIMIENTO<br />UNIVERSIDAD SAN BUENAVENTURA
+      </h1>
+      <form [formGroup]="loginForm" (ngSubmit)="showModal()">
+        <mat-form-field class="max-width" appearance="outline">
+          <mat-label>Correo Electronico</mat-label>
+          <input
+            matInput
+            [disabled]="onRequest"
+            autocomplete="disabled"
+            formControlName="correo_est"
+            placeholder="Ingrese su correo electronico"
+          />
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error *ngIf="loginForm.get('correo_est')?.hasError('required')">
+            Este campo es requerido
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('correo_est')?.hasError('email')">
+            Ingrese un email valido
+          </mat-error>
+        </mat-form-field>
 
-                <mat-form-field class="max-width" appearance="outline">
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput [disabled]="onRequest" autocomplete="disabled" formControlName="password" [type]="hidePassword ? 'password' : 'text'" placeholder="Ingrese su contraseña" />
-                    <button mat-icon-button type="button" matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
-                      <mat-icon>{{ hidePassword ? "visibility_off" : "visibility" }}</mat-icon>
-                    </button>
-                </mat-form-field>
-                <button mat-raised-button color="primary" class="btn-block" type="submit" [disabled]="loginForm.invalid" [class.orange-button]="loginForm.valid">
-                  <ng-container *ngIf="!onRequest">
-                    Iniciar Sesion
-                    <div *ngIf="onRequest" class="spinner-grow text-light spinner-grow-sm" role="status">
-                      <span class="sr-only">Loading...</span>
-                    </div>
-                  </ng-container>
-                </button>
-            </form>
-            <p class="text-white texto-querido-usuario">
-                Querido usuario acá podrá realizar la gestión del conocimiento de la universidad San Buenaventura Bogotá, ingrese sus datos y posteriormente acepte los términos de seguridad
-            </p>
-        </div>
+        <mat-form-field class="max-width" appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [disabled]="onRequest"
+            autocomplete="disabled"
+            formControlName="password"
+            [type]="hidePassword ? 'password' : 'text'"
+            placeholder="Ingrese su contraseña"
+          />
+          <button
+            mat-icon-button
+            type="button"
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword"
+          >
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          class="btn-block centrar-texto"
+          type="submit"
+          [disabled]="loginForm.invalid"
+          [class.orange-button]="loginForm.valid"
+        >
+          <ng-container *ngIf="!onRequest"> Iniciar Sesion </ng-container>
+          <ng-container *ngIf="onRequest">
+            <mat-spinner style="margin: 9px auto" diameter="20"></mat-spinner>
+          </ng-container>
+        </button>
+      </form>
+      <p class="text-white texto-querido-usuario">
+        Querido usuario acá podrá realizar la gestión del conocimiento de la
+        universidad San Buenaventura Bogotá, ingrese sus datos y posteriormente
+        acepte los términos de seguridad
+      </p>
     </div>
+  </div>
 </div>

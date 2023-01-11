@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       Validators.required,
     ]),
     password: new FormControl(this.user.password, [Validators.required]),
-    rol: new FormControl()
+    rol: new FormControl(),
   });
 
   constructor(
@@ -47,9 +47,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   showModal() {
-    this.loginServ
-    .getRoles(this.loginForm.value)
-    .subscribe((resp: any) => {
+    this.onRequest = true;
+    this.loginServ.getRoles(this.loginForm.value).subscribe((resp: any) => {
       if (resp.success) {
         const roles = resp.roles;
         setTimeout(() => {
@@ -59,43 +58,44 @@ export class LoginComponent implements OnInit {
             disableClose: true,
           });
           dialogRef.afterClosed().subscribe((result) => {
+            this.onRequest = false;
             if (result.success) {
               this.login(result.role);
             }
           });
         }, 2000);
       } else {
-        this.alServ.abrirAlerta(resp.mensaje, 'error')
+        this.alServ.abrirAlerta(resp.mensaje, 'error');
       }
     });
   }
 
   iniciarSesion() {
-    return new Promise(resolve => {
-      this.loginServ.iniciarSesion(this.loginForm.value).subscribe(
-        (data: any) => resolve(data)
-      )
-    })
+    return new Promise((resolve) => {
+      this.loginServ
+        .iniciarSesion(this.loginForm.value)
+        .subscribe((data: any) => resolve(data));
+    });
   }
 
   async login(rol: string) {
     this.loginForm.patchValue({
-      rol: rol
-    })
+      rol: rol,
+    });
     localStorage.setItem('user_data', JSON.stringify(this.loginForm.value));
     localStorage.setItem('rol', btoa(rol));
-    const sessionData: any = await this.iniciarSesion()
+    const sessionData: any = await this.iniciarSesion();
     if (sessionData.success == false) {
-      this.alServ.abrirAlerta(sessionData.mensaje, 'error')
-      return
+      this.alServ.abrirAlerta(sessionData.mensaje, 'error');
+      return;
     }
-    this.tokenServ.set(sessionData.access_token)
+    this.tokenServ.set(sessionData.access_token);
     if (sessionData.politicas == 0) {
       this.router.navigate(['/policy']);
     } else {
-      this.logged.changeAuthStatus(true)
-      localStorage.removeItem('user_data')
-      this.router.navigateByUrl('/admin/reportes')
+      this.logged.changeAuthStatus(true);
+      localStorage.removeItem('user_data');
+      this.router.navigateByUrl('/admin/reportes');
     }
   }
 }
