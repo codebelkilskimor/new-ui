@@ -9,26 +9,46 @@ import { SearcherBComponent } from './pages/searcher-b/searcher-b.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/reportes',
+    redirectTo: '/buscador',
     pathMatch: 'full',
   },
   {
-    path: 'reportes',
-    component: HomeComponent,
-    canActivate: [PrivateGuard],
+    path: 'dash',
+    children: [
+      {
+        path: 'reportes',
+        component: HomeComponent,
+        canActivate: [PrivateGuard],
+      },
+      {
+        path: 'dashboard',
+        component: ReportsComponent,
+        canActivate: [PrivateGuard],
+      },
+      {
+        path: '',
+        redirectTo: '/admin/dash/reportes',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
-    path: 'dashboard',
-    component: ReportsComponent,
-    canActivate: [PrivateGuard],
-  },
-  {
-    path: 'buscador-proyecto',
-    component: SearcherComponent,
-  },
-  {
-    path: 'buscador-investigador',
-    component: SearcherBComponent,
+    path: 'buscador',
+    children: [
+      {
+        path: 'buscador-proyecto',
+        component: SearcherComponent,
+      },
+      {
+        path: 'buscador-investigador',
+        component: SearcherBComponent,
+      },
+      {
+        path: '',
+        redirectTo: '/admin/buscador/buscador-proyecto',
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 
