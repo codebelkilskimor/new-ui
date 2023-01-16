@@ -15,6 +15,7 @@ export class ReportsComponent implements OnInit {
   elemsDash: ElementosDashboard = {} as ElementosDashboard;
   dataLoad: boolean = false;
   tipoGrafica: number = 0;
+  filtros: any = {};
 
   constructor(private dashServ: DashboardService) {}
 
@@ -23,5 +24,9 @@ export class ReportsComponent implements OnInit {
       this.elemsDash = resp;
       this.dataLoad = true;
     });
+  }
+
+  getFiltros(e: any) {
+    this.filtros = e;
   }
 }

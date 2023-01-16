@@ -1,6 +1,6 @@
 <app-navegacion></app-navegacion>
 
-<app-filters></app-filters>
+<app-filters (filtros)="getFiltros($event)"></app-filters>
 
 <div class="contenedor-max-app" *ngIf="dataLoad">
   <div class="contenedor-tarjetas">
@@ -31,9 +31,9 @@
       <mat-form-field appearance="fill" class="ancho-completo no-padding">
         <mat-label>Seleccione la gráfica a consultar</mat-label>
         <mat-select [(ngModel)]="tipoGrafica">
-          <mat-option value="0">Proyectos en proceso/terminados</mat-option>
-          <mat-option value="1">Presupuesto proyectos por mes</mat-option>
-          <mat-option value="2"
+          <mat-option value="1">Proyectos en proceso/terminados</mat-option>
+          <mat-option value="2">Presupuesto proyectos por mes</mat-option>
+          <mat-option value="3"
             >Cantidad Proyectos de grado y semillero por facultad</mat-option
           >
         </mat-select>
@@ -41,15 +41,15 @@
     </div>
 
     <div class="ancho-completo fondo-blanco">
-      <ng-container [ngSwitch]="tipoGrafica">
+      <ng-container [ngSwitch]="tipoGrafica" *ngIf="tipoGrafica !== 0">
         <app-proyectos-proceso-terminados
-          *ngSwitchCase="0"
+          *ngSwitchCase="1"
         ></app-proyectos-proceso-terminados>
         <app-presupuesto-proyectos-por-mes
-          *ngSwitchCase="1"
+          *ngSwitchCase="2"
         ></app-presupuesto-proyectos-por-mes>
         <app-proyectos-semillero-grado
-          *ngSwitchCase="2"
+          *ngSwitchCase="3"
         ></app-proyectos-semillero-grado>
       </ng-container>
     </div>
