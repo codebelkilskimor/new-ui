@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { ElementosDashboard } from '../interfaces/datosDashboard';
 import { ProyectosGraficoEstadoFacultad } from '../interfaces/proyectosGraficoEstadoFacultad';
 import { ProyectosGradoSemillerosFacultad } from '../interfaces/proyectosGradoSemillerosFacultad';
+import { ProyectosPresupuestoPorMes } from '../interfaces/proyectosPresupuestoPorMes';
 
 export const API_URL = environment.apiUrl;
 
@@ -34,8 +35,8 @@ export class DashboardService {
   }
 
   getProyectosPresupuesto(data: any) {
-    return this.http.post<ProyectosGraficoEstadoFacultad>(
-      `${API_URL}/graficos/elementos-dashboard`,
+    return this.http.post<ProyectosPresupuestoPorMes>(
+      `${API_URL}/graficos/datos-graficas-presupuesto-proyectos-por-mes`,
       data
     );
   }

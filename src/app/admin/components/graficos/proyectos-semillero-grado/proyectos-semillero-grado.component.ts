@@ -17,7 +17,6 @@ export class ProyectosSemilleroGradoComponent implements OnInit {
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
     scales: {
       x: {},
       y: {
@@ -58,7 +57,6 @@ export class ProyectosSemilleroGradoComponent implements OnInit {
         const proyectosGradoCantidad: number[] = [];
         const semillerosCantidad: number[] = [];
         Object.keys(resp.datos).forEach((val, i) => {
-          console.log(resp.datos[i]);
           labelsData.push(resp.datos[i].facultad);
           proyectosGradoCantidad.push(resp.datos[i].proyectos_grado);
           semillerosCantidad.push(resp.datos[i].semilleros);

@@ -1,10 +1,9 @@
 <canvas
   baseChart
+  *ngIf="!hideChart"
   width="400"
   height="120"
   [data]="lineChartData"
   [options]="lineChartOptions"
   [type]="lineChartType"
-  (chartHover)="chartHovered($event)"
-  (chartClick)="chartClicked($event)"
 ></canvas>
