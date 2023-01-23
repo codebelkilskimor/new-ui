@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { DashboardService } from '../../../services/dashboard.service';
 
 @Component({
   selector: 'app-proyectos-semillero-grado',
@@ -11,6 +12,8 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 })
 export class ProyectosSemilleroGradoComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+  @Input() filtros: any = {};
+  hideChart: boolean = true;
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -18,7 +21,7 @@ export class ProyectosSemilleroGradoComponent implements OnInit {
     scales: {
       x: {},
       y: {
-        min: 10,
+        min: 1,
       },
     },
     plugins: {
@@ -34,49 +37,46 @@ export class ProyectosSemilleroGradoComponent implements OnInit {
   public barChartType: ChartType = 'bar';
   public barChartPlugins = [DataLabelsPlugin];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
-    datasets: [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-    ],
+  barChartData: ChartData = {
+    labels: [],
+    datasets: [],
   };
-  constructor() {}
+  constructor(private dashboardServ: DashboardService) {}
 
-  ngOnInit(): void {}
-
-  public chartClicked({
-    event,
-    active,
-  }: {
-    event?: ChartEvent;
-    active?: {}[];
-  }): void {
-    console.log(event, active);
+  ngOnInit(): void {
+    this.getDatosGrafica();
   }
 
-  public chartHovered({
-    event,
-    active,
-  }: {
-    event?: ChartEvent;
-    active?: {}[];
-  }): void {
-    console.log(event, active);
-  }
+  getDatosGrafica() {
+    this.dashboardServ
+      .getProyectosGradoSemillero(this.filtros)
+      .subscribe((resp) => {
+        if (!resp.success) {
+          return;
+        }
+        const labelsData: string[] = [];
+        const proyectosGradoCantidad: number[] = [];
+        const semillerosCantidad: number[] = [];
+        Object.keys(resp.datos).forEach((val, i) => {
+          console.log(resp.datos[i]);
+          labelsData.push(resp.datos[i].facultad);
+          proyectosGradoCantidad.push(resp.datos[i].proyectos_grado);
+          semillerosCantidad.push(resp.datos[i].semilleros);
+        });
+        this.barChartData.labels = labelsData;
 
-  public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40,
-    ];
+        this.barChartData.datasets.push({
+          data: proyectosGradoCantidad,
+          label: 'Proyectos de Grado',
+          backgroundColor: '#6bb555',
+        });
 
-    this.chart?.update();
+        this.barChartData.datasets.push({
+          data: semillerosCantidad,
+          label: 'Semillero',
+          backgroundColor: '#30addb',
+        });
+        this.hideChart = false;
+      });
   }
 }

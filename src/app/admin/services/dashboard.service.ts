@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ElementosDashboard } from '../interfaces/datosDashboard';
 import { ProyectosGraficoEstadoFacultad } from '../interfaces/proyectosGraficoEstadoFacultad';
+import { ProyectosGradoSemillerosFacultad } from '../interfaces/proyectosGradoSemillerosFacultad';
 
 export const API_URL = environment.apiUrl;
 
@@ -15,6 +16,13 @@ export class DashboardService {
   getDatosDashboardTarjeta() {
     return this.http.get<ElementosDashboard>(
       `${API_URL}/graficos/elementos-dashboard`
+    );
+  }
+
+  getProyectosGradoSemillero(data: any) {
+    return this.http.post<ProyectosGradoSemillerosFacultad>(
+      `${API_URL}/graficos/datos-graficas-grado-semillero-facultad`,
+      data
     );
   }
 
