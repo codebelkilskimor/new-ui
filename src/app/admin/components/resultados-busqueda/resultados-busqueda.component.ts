@@ -19,6 +19,7 @@ export class ResultadosBusquedaComponent implements OnInit {
 
   onRequest: boolean = false;
   showTable: boolean = false;
+  nombre: string = '';
   reporte: string = '';
   resultadosBusquedaProjects: Proyecto[] = [];
   resultadosBusquedaUsers: Usuario[] = [];
@@ -40,6 +41,7 @@ export class ResultadosBusquedaComponent implements OnInit {
   }
 
   sendRequestPro(): void {
+    this.setNombreFiltro();
     this.buscProServ.getProyectosBuscador(this.filtros).subscribe((resp) => {
       this.resultadosBusquedaProjects = resp.proyectos;
       this.onRequest = false;
@@ -48,6 +50,7 @@ export class ResultadosBusquedaComponent implements OnInit {
   }
 
   sendRequestInv(): void {
+    this.setNombreFiltro();
     this.buscInvServ.getInvestigadores(this.filtros).subscribe((resp) => {
       this.resultadosBusquedaUsers = resp.usuarios;
       this.onRequest = false;
@@ -55,8 +58,11 @@ export class ResultadosBusquedaComponent implements OnInit {
     });
   }
 
+  setNombreFiltro() {
+    this.filtros.nombre = this.nombre;
+  }
+
   getFiltros(e: any) {
-    console.log(e);
     this.filtros = e;
   }
 

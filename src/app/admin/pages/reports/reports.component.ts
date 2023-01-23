@@ -1,7 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
-
+import { Component, OnInit } from '@angular/core';
 import { default as Annotation } from 'chartjs-plugin-annotation';
 import { DashboardService } from '../../services/dashboard.service';
 import { ElementosDashboard } from '../../interfaces/datosDashboard';

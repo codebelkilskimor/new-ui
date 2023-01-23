@@ -5,9 +5,10 @@
       <div class="ancho-completo">
         <mat-form-field
           appearance="fill"
-          class="ancho-completo no-padding color-negro">
+          class="ancho-completo no-padding color-negro"
+        >
           <mat-label>{{ tituloResultados }}</mat-label>
-          <input matInput />
+          <input matInput [(ngModel)]="nombre" />
         </mat-form-field>
         <button
           mat-button
@@ -30,10 +31,9 @@
       </div>
       <div *ngIf="showTable && api === 'inv'">
         <div class="barra-resultados">RESULTADOS INVESTIGADORES:</div>
-        <app-tabla-investigadores
-          [resultados]="resultadosBusquedaUsers">
+        <app-tabla-investigadores [resultados]="resultadosBusquedaUsers">
         </app-tabla-investigadores>
-         <!-- resultadosBusquedaUsers -->
+        <!-- resultadosBusquedaUsers -->
       </div>
     </div>
   </div>

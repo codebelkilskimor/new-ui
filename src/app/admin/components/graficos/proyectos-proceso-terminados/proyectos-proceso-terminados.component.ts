@@ -62,11 +62,13 @@ export class ProyectosProcesoTerminadosComponent implements OnInit {
         this.barChartData.datasets.push({
           data: finalizadosArrData,
           label: 'Finalizados',
+          backgroundColor: '#6bb555',
         });
 
         this.barChartData.datasets.push({
           data: noFinalizadosArrData,
           label: 'No Finalizados',
+          backgroundColor: '#30addb',
         });
         this.hideChart = false;
       });

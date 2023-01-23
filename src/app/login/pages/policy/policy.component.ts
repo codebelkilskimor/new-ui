@@ -12,7 +12,7 @@ import { TokenService } from '../../../services/token.service';
 })
 export class PolicyComponent implements OnInit {
   lockTime = 2000;
-  
+
   lockButton = true;
   constructor(
     private router: Router,
@@ -33,13 +33,11 @@ export class PolicyComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  
-
   accept() {
-    this.logged.changeAuthStatus(true)
-    const usuData = JSON.parse(localStorage.getItem('user_data') || '')
-    this.loginServ.aceptarPoliticas({email: usuData.correo_est}).subscribe(
-      data => this.router.navigateByUrl('/admin/reportes')
-    )
+    this.logged.changeAuthStatus(true);
+    const usuData = JSON.parse(localStorage.getItem('user_data') || '');
+    this.loginServ
+      .aceptarPoliticas({ email: usuData.correo_est })
+      .subscribe((data) => this.router.navigateByUrl('/admin/dash/reportes'));
   }
 }

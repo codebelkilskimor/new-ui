@@ -23,4 +23,8 @@ export class NavbarComponent {
     this.logged.changeAuthStatus(false);
     this.router.navigateByUrl('/login');
   }
+
+  irBiblioteca() {
+    window.location.href = 'https://bibliotecadigital.usb.edu.co/';
+  }
 }
