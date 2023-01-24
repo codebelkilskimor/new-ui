@@ -28,10 +28,10 @@ export class DialogDetalleInvestigadorComponent implements OnInit {
         Object.keys(valHand).forEach((value, index) => {
           const clases = valHand[index].clases;
           let facultades = clases.map((item) => {
-            return item.materium.programa.facultad.nombre;
+            return item.materium.programas.facultad.nombre;
           });
           let programas = clases.map((item) => {
-            return item.materium.programa.nombre;
+            return item.materium.programas.nombre;
           });
           facultades.some((item, idx) => {
             const existeFacultad = this.facultadesSinRepetir.find(

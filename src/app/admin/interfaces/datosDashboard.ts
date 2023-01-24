@@ -7,6 +7,8 @@ export interface ElementosDashboard {
   convocatorias: number;
   inv_independientes: number;
   presupuesto: number;
+  tacitos: number;
+  implicitos: number;
   ranking: Ranking[];
 }
 

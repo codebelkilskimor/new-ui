@@ -1,19 +1,32 @@
-<button mat-button class="d-flex align-items-center justify-content-end container-filters text-right boton-filtro orange-button-transparent no-border-radius" (click)="toggleFilter()">
+<button
+  mat-button
+  class="d-flex align-items-center justify-content-end container-filters text-right boton-filtro orange-button-transparent no-border-radius"
+  (click)="toggleFilter()"
+>
   Filtros <mat-icon>filter_alt</mat-icon>
 </button>
 
 <ng-container *ngIf="toggleFilters" class="animate__animated animate__fadeIn">
-    <div class="filters-row">
-        <div class="cont-filter" *ngFor="let el of arrFiltros; let i = index" [ngClass]="{ 'no-border-right': i == 3 }">
-            <div mat-subheader>
-                <strong>{{ el.titulo }}</strong>
-                <mat-icon>expand_more</mat-icon>
-            </div>
-            <mat-selection-list #filterList>
-                <mat-list-option (click)="setValorFiltro(el.key, subel.id)" checkboxPosition="before" *ngFor="let subel of el.contenido" [value]="subel.id">
-                    {{ subel.nombre }}
-                </mat-list-option>
-            </mat-selection-list>
-        </div>
+  <div class="filters-row">
+    <div
+      class="cont-filter"
+      *ngFor="let el of arrFiltros; let i = index"
+      [ngClass]="{ 'no-border-right': i == 3 }"
+    >
+      <div mat-subheader>
+        <strong>{{ el.titulo }}</strong>
+        <mat-icon>expand_more</mat-icon>
+      </div>
+      <mat-selection-list #filterList>
+        <mat-list-option
+          (click)="setValorFiltro(el.key, subel.id)"
+          checkboxPosition="before"
+          *ngFor="let subel of el.contenido"
+          [value]="subel.id"
+        >
+          {{ subel.nombre }}
+        </mat-list-option>
+      </mat-selection-list>
     </div>
+  </div>
 </ng-container>

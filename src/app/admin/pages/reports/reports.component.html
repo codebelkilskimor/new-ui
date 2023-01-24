@@ -73,13 +73,13 @@
       <app-cards
         colorFondo="tarjeta-naranja"
         tituloTarjeta="Conocimiento tacito / implicito"
-        valorTarjeta="12/123"
+        valorTarjeta="{{ elemsDash.tacitos }} / {{ elemsDash.implicitos }}"
       ></app-cards>
     </div>
   </div>
   <div class="contenedor-tabla">
     <h3 class="color-blanco mb-3 mt-3">
-      Ranking proyectos que involucran a una facultad
+      Ranking facultades involucradas en proyectos a una facultad
     </h3>
     <app-tabla-ranking
       [datosRanking]="elemsDash.ranking"

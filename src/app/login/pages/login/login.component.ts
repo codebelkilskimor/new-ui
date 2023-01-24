@@ -87,6 +87,7 @@ export class LoginComponent implements OnInit {
     const sessionData: any = await this.iniciarSesion();
     if (sessionData.success == false) {
       this.alServ.abrirAlerta(sessionData.mensaje, 'error');
+      this.onRequest = false;
       return;
     }
     this.tokenServ.set(sessionData.access_token);
@@ -95,7 +96,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.logged.changeAuthStatus(true);
       localStorage.removeItem('user_data');
-      this.router.navigateByUrl('/admin/reportes');
+      this.router.navigateByUrl('/admin/dash/reportes');
     }
   }
 }

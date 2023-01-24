@@ -21,13 +21,15 @@
     <div class="subcontenedor-resultados-tarjeta">
       <h3 class="subtitulo-resultados">Programa:</h3>
       <span class="texto-resultado">
-        {{ res.participaciones[0].clases[0].materium.programa.nombre }}
+        {{ res.participaciones[0].clases[0].materium.programas.nombre }}
       </span>
     </div>
     <div class="subcontenedor-resultados-tarjeta">
       <h3 class="subtitulo-resultados">Facultad:</h3>
       <span class="texto-resultado">
-        {{ res.participaciones[0].clases[0].materium.programa.facultad.nombre }}
+        {{
+          res.participaciones[0].clases[0].materium.programas.facultad.nombre
+        }}
       </span>
     </div>
   </div>

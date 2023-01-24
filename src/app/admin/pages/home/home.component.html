@@ -3,46 +3,97 @@
 <app-filters (filtros)="getFiltros($event)"></app-filters>
 
 <div class="contenedor-max-app">
-    <div class="row mt-5">
-        <h2 class="color-blanco">GENERADOR DE REPORTES</h2>
+  <div class="row mt-5">
+    <h2 class="color-blanco">GENERADOR DE REPORTES</h2>
 
-        <mat-form-field appearance="fill" class="ancho-completo no-padding">
-            <mat-label>Seleccione un reporte:</mat-label>
-            <mat-select class="ancho-completo" [(ngModel)]="reporte" (selectionChange)="selectReporte($event)">
-                <mat-option style="background-color: #fff" value="">-- Seleccione un reporte --</mat-option>
-                <mat-option style="background-color: #fff" *ngFor="let r of optsReportes" [value]="r.id">
-                    {{ r.nombre }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field appearance="fill" class="ancho-completo no-padding">
+      <mat-label>Seleccione un reporte:</mat-label>
+      <mat-select
+        class="ancho-completo"
+        [(ngModel)]="reporte"
+        (selectionChange)="selectReporte($event)"
+      >
+        <mat-option style="background-color: #fff" value=""
+          >-- Seleccione un reporte --</mat-option
+        >
+        <mat-option
+          style="background-color: #fff"
+          *ngFor="let r of optsReportes"
+          [value]="r.id"
+        >
+          {{ r.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field mat-form-field appearance="fill" class="ancho-completo no-padding" *ngIf="showProgramas">
-            <mat-label>Seleccione un programa:</mat-label>
-            <mat-select class="ancho-completo" [(ngModel)]="programaConsulta" (selectionChange)="facultadConsulta = $event.value">
-                <mat-option style="background-color: #fff" value="" selected>-- Seleccione un programa --</mat-option>
-                <mat-option style="background-color: #fff" *ngFor="let p of programas" [value]="p.id">
-                    {{ p.nombre }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field
+      mat-form-field
+      appearance="fill"
+      class="ancho-completo no-padding"
+      *ngIf="showProgramas"
+    >
+      <mat-label>Seleccione un programa:</mat-label>
+      <mat-select
+        class="ancho-completo"
+        [(ngModel)]="programaConsulta"
+        (selectionChange)="facultadConsulta = $event.value"
+      >
+        <mat-option style="background-color: #fff" value="" selected
+          >-- Seleccione un programa --</mat-option
+        >
+        <mat-option
+          style="background-color: #fff"
+          *ngFor="let p of programas"
+          [value]="p.id"
+        >
+          {{ p.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field mat-form-field appearance="fill" class="ancho-completo no-padding" *ngIf="showFacultades">
-            <mat-label>Seleccione una facultad:</mat-label>
-            <mat-select class="ancho-completo" [(ngModel)]="facultadConsulta" (selectionChange)="programaConsulta = $event.value">
-                <mat-option style="background-color: #fff" value="" selected>-- Seleccione una facultad --</mat-option>
-                <mat-option style="background-color: #fff" *ngFor="let f of facultades" [value]="f.id">
-                    {{ f.nombre }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field
+      mat-form-field
+      appearance="fill"
+      class="ancho-completo no-padding"
+      *ngIf="showFacultades"
+    >
+      <mat-label>Seleccione una facultad:</mat-label>
+      <mat-select
+        class="ancho-completo"
+        [(ngModel)]="facultadConsulta"
+        (selectionChange)="programaConsulta = $event.value"
+      >
+        <mat-option style="background-color: #fff" value="" selected
+          >-- Seleccione una facultad --</mat-option
+        >
+        <mat-option
+          style="background-color: #fff"
+          *ngFor="let f of facultades"
+          [value]="f.id"
+        >
+          {{ f.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <button mat-button class="orange-button generar-reporte" (click)="sendRequest()" [disabled]="reporte === ''">Generar PDF <i class="fa fa-file-pdf"></i></button>
+    <button
+      mat-button
+      class="orange-button generar-reporte"
+      (click)="sendRequest()"
+      [disabled]="reporte === ''"
+    >
+      Generar PDF <i class="fa fa-file-pdf"></i>
+    </button>
 
-        <app-loader class="ancho-completo" *ngIf="onRequest" [element]="'Reporte de datos'"></app-loader>
+    <app-loader
+      class="ancho-completo"
+      *ngIf="onRequest"
+      [element]="'Reporte de datos'"
+    ></app-loader>
 
-        <div *ngIf="showTable" class="ancho-completo">
-            <h2 class="mt-3 mb-1 color-blanco ancho-completo">Resultados:</h2>
-            <app-tabla-reportes [datosReportes]="dataReportes"></app-tabla-reportes>
-        </div>
+    <div *ngIf="showTable" class="ancho-completo">
+      <h2 class="mt-3 mb-1 color-blanco ancho-completo">Resultados:</h2>
+      <app-tabla-reportes [datosReportes]="dataReportes"></app-tabla-reportes>
     </div>
+  </div>
 </div>

@@ -49,7 +49,7 @@ export interface Clase {
 export interface Materium {
   catalogo: string;
   nombre: string;
-  programa: Programa;
+  programas: Programa;
 }
 
 export interface Programa {
