@@ -21,23 +21,20 @@ export class DashboardService {
   }
 
   getProyectosGradoSemillero(data: any) {
-    return this.http.post<ProyectosGradoSemillerosFacultad>(
-      `${API_URL}/graficos/datos-graficas-grado-semillero-facultad`,
-      data
+    return this.http.get<ProyectosGradoSemillerosFacultad>(
+      `${API_URL}/graficos/datos-graficas-grado-semillero-facultad`
     );
   }
 
   getProyectosEstadosPorFacultad(data: any) {
-    return this.http.post<ProyectosGraficoEstadoFacultad>(
-      `${API_URL}/graficos/datos-graficas-finalizados-facultad`,
-      data
+    return this.http.get<ProyectosGraficoEstadoFacultad>(
+      `${API_URL}/graficos/datos-graficas-finalizados-facultad`
     );
   }
 
   getProyectosPresupuesto(data: any) {
-    return this.http.post<ProyectosPresupuestoPorMes>(
-      `${API_URL}/graficos/datos-graficas-presupuesto-proyectos-por-mes`,
-      data
+    return this.http.get<ProyectosPresupuestoPorMes>(
+      `${API_URL}/graficos/datos-graficas-presupuesto-proyectos-por-mes`
     );
   }
 }
