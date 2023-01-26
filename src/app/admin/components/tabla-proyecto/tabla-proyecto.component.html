@@ -19,15 +19,10 @@
   </div>
   <div class="contenedor-flex-tarjeta-buscador">
     <div class="subcontenedor-resultados-tarjeta">
-      <h3 class="subtitulo-resultados">Programa:</h3>
-      <span class="texto-resultado">
-        {{ res.clases[0].materium.programas.nombre }}
-      </span>
-    </div>
-    <div class="subcontenedor-resultados-tarjeta">
-      <h3 class="subtitulo-resultados">Facultad:</h3>
-      <span class="texto-resultado">
-        {{ res.clases[0].materium.programas.facultad.nombre }}
+      <h3 class="subtitulo-resultados">Clase - Programa - Facultad</h3>
+      <span class="texto-resultado" *ngFor="let c of res.clases">
+        {{ c.nombre }} - {{ c.materium.programas.nombre }} -
+        {{ c.materium.programas.facultad.nombre }}<br />
       </span>
     </div>
     <div class="subcontenedor-resultados-tarjeta">
