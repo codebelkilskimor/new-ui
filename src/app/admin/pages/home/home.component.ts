@@ -6,6 +6,7 @@ import { FacPrograma } from '../../interfaces/facPrograma';
 import { environment } from 'src/environments/environment';
 import { DatosReporte } from '../../interfaces/datosReporte';
 import { AlertasService } from '../../../services/alertas.service';
+import { RolesService } from '../../../services/roles.service';
 
 export const FILES_URL = environment.filesUrl;
 
@@ -27,16 +28,22 @@ export class HomeComponent implements OnInit {
   facultades: FacPrograma[] = [];
   dataReportes: DatosReporte[] = [];
   filtros: any = {};
+  reportesVisiblesRol: any;
 
   constructor(
     private reporServ: ReportesService,
-    private alServ: AlertasService
+    private alServ: AlertasService,
+    private rolServ: RolesService
   ) {}
 
   ngOnInit(): void {
-    this.reporServ
-      .getReportes()
-      .subscribe((resp) => (this.optsReportes = resp));
+    this.reportesVisiblesRol = this.rolServ.getReportesAVer(
+      atob(localStorage.getItem('rol') || '')
+    );
+    this.reporServ.getReportes().subscribe((resp) => {
+      const reportesAVer = this.reportesVisiblesRol.reportes;
+      this.optsReportes = resp.filter((x: any) => reportesAVer.includes(x.id));
+    });
     this.reporServ.getProgramas().subscribe((resp) => (this.programas = resp));
     this.reporServ
       .getFacultades()

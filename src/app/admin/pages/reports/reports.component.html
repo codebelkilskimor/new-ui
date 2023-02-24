@@ -1,4 +1,6 @@
-<app-navegacion></app-navegacion>
+<app-navegacion
+  [verDashboard]="elementosDashboardRol.dashboard"
+></app-navegacion>
 
 <app-filters (filtros)="getFiltros($event)"></app-filters>
 
@@ -9,21 +11,25 @@
         colorFondo="tarjeta-naranja"
         tituloTarjeta="Proy. terminados año / creados"
         valorTarjeta="{{ elemsDash.finalizados }} / {{ elemsDash.creados }}"
+        *ngIf="getTarjetaVisible(1)"
       ></app-cards>
       <app-cards
         colorFondo="tarjeta-azul-oscura"
         tituloTarjeta="Proy. aula"
         valorTarjeta="{{ elemsDash.aula }}"
+        *ngIf="getTarjetaVisible(2)"
       ></app-cards>
       <app-cards
         colorFondo="tarjeta-azul-clara"
         tituloTarjeta="Proy. grado"
         valorTarjeta="{{ elemsDash.grado }}"
+        *ngIf="getTarjetaVisible(3)"
       ></app-cards>
       <app-cards
         colorFondo="tarjeta-naranja"
         tituloTarjeta="Proy. semillero"
         valorTarjeta="{{ elemsDash.semillero }}"
+        *ngIf="getTarjetaVisible(4)"
       ></app-cards>
     </div>
 
@@ -31,9 +37,13 @@
       <mat-form-field appearance="fill" class="ancho-completo no-padding">
         <mat-label>Seleccione la gráfica a consultar</mat-label>
         <mat-select [(ngModel)]="tipoGrafica">
-          <mat-option value="1">Proyectos en proceso/terminados</mat-option>
-          <mat-option value="2">Presupuesto proyectos por mes</mat-option>
-          <mat-option value="3"
+          <mat-option value="1" *ngIf="getGraficaVisible(1)"
+            >Proyectos en proceso/terminados</mat-option
+          >
+          <mat-option value="2" *ngIf="getGraficaVisible(2)"
+            >Presupuesto proyectos por mes</mat-option
+          >
+          <mat-option value="3" *ngIf="getGraficaVisible(3)"
             >Cantidad Proyectos de grado y semillero por facultad</mat-option
           >
         </mat-select>
@@ -59,25 +69,29 @@
         colorFondo="tarjeta-naranja"
         tituloTarjeta="Proy. convocatoria"
         valorTarjeta="{{ elemsDash.convocatorias }}"
+        *ngIf="getTarjetaVisible(5)"
       ></app-cards>
       <app-cards
         colorFondo="tarjeta-azul-oscura"
         tituloTarjeta="Proy. Investigadores Ind."
         valorTarjeta="{{ elemsDash.inv_independientes }}"
+        *ngIf="getTarjetaVisible(6)"
       ></app-cards>
       <app-cards
         colorFondo="tarjeta-azul-clara"
         tituloTarjeta="Presupuesto a proyectos"
         valorTarjeta="{{ elemsDash.presupuesto }}"
+        *ngIf="getTarjetaVisible(7)"
       ></app-cards>
       <app-cards
         colorFondo="tarjeta-naranja"
         tituloTarjeta="Conocimiento tacito / implicito"
         valorTarjeta="{{ elemsDash.tacitos }} / {{ elemsDash.implicitos }}"
+        *ngIf="getTarjetaVisible(8)"
       ></app-cards>
     </div>
   </div>
-  <div class="contenedor-tabla">
+  <div class="contenedor-tabla" *ngIf="elementosDashboardRol.ranking">
     <h3 class="color-blanco mb-3 mt-3">
       Ranking facultades involucradas en proyectos a una facultad
     </h3>
