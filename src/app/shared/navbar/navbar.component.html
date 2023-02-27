@@ -32,6 +32,11 @@
     >
       <mat-icon>account_circle</mat-icon>
       <mat-menu #menu="matMenu">
+        <div *ngIf="datosUsu" class="datos-usu-logueado">
+          <b>Bienvenido</b><br />{{ datosUsu.datos.nombres }}
+          {{ datosUsu.datos.apellidos }}<br />
+          <b>Rol: </b> {{ datosUsu.rol }}
+        </div>
         <button (click)="logout()" mat-menu-item>
           <mat-icon>logout</mat-icon>
           <span>Logout</span>

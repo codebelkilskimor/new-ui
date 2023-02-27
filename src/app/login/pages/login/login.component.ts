@@ -46,30 +46,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  showModal() {
-    this.onRequest = true;
-    this.loginServ.getRoles(this.loginForm.value).subscribe((resp: any) => {
-      if (resp.success) {
-        const roles = resp.roles;
-        setTimeout(() => {
-          const dialogRef = this.dialog.open(RoleModalComponent, {
-            width: '550px',
-            data: { roles },
-            disableClose: true,
-          });
-          dialogRef.afterClosed().subscribe((result) => {
-            this.onRequest = false;
-            if (result.success) {
-              this.login(result.role);
-            }
-          });
-        }, 2000);
-      } else {
-        this.alServ.abrirAlerta(resp.mensaje, 'error');
-      }
-    });
-  }
-
   iniciarSesion() {
     return new Promise((resolve) => {
       this.loginServ
@@ -78,18 +54,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  async login(rol: string) {
-    this.loginForm.patchValue({
-      rol: rol,
-    });
+  async login() {
     localStorage.setItem('user_data', JSON.stringify(this.loginForm.value));
-    localStorage.setItem('rol', btoa(rol));
     const sessionData: any = await this.iniciarSesion();
     if (sessionData.success == false) {
       this.alServ.abrirAlerta(sessionData.mensaje, 'error');
       this.onRequest = false;
       return;
     }
+    localStorage.setItem('rol', btoa(sessionData.rol || ''));
     this.tokenServ.set(sessionData.access_token);
     if (sessionData.politicas == 0) {
       this.router.navigate(['/policy']);
