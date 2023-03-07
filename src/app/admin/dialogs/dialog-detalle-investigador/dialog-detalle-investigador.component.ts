@@ -21,7 +21,6 @@ export class DialogDetalleInvestigadorComponent implements OnInit {
   }
 
   modifyRespuestaFacultades(arrModificar: Usuario) {
-    console.log(arrModificar);
     Object.keys(arrModificar).forEach((val) => {
       if (val === 'participaciones') {
         const valHand = arrModificar.participaciones;

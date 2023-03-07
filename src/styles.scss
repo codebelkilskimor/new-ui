@@ -201,6 +201,8 @@ button {
 .texto-resultado {
   color: #6f6f6f;
   display: flex;
+  flex-shrink: 0;
+  flex-flow: row wrap;
 }
 
 .texto-resultado div,

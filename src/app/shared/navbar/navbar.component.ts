@@ -18,7 +18,6 @@ export class NavbarComponent {
     this.datosUsu = null;
     this.logged.authStatus$.subscribe((logStatus) => {
       if (logStatus) {
-        console.log('Cambie');
         this.getDatosUsu();
       }
       this.loggedIn = logStatus;
